@@ -26,40 +26,88 @@ Om ni hinner:
 
 tabeller:
 
-Utbildningar
+Utbildning
 - ID (PK)
+- KlassID (FK)
+- Namn (BUV25)
+- Beskrivning
+- KursledareID (FK)
+
+Kurs
+- ID (PK)
+- UtbildningID (FK)
 - Namn
 - Beskrivning
-- KursID (FK)
+- startDatum
+- slutDatum
+
+Elev
+- ID (PK)
 - KlassID (FK)
+- Förnamn
+- Efternamn
+- Email
 - KursledareID (FK
 
 
-Kurser
+Klass
 - ID (PK)
 - Namn
+
+Kursledare //
+- ID (PK)
+- Förnamn
+- Efternamn
+- Email
+
+Enkel Lösning
+Utbildning
+- ID (PK)
+- Namn (BUV25)
 - Beskrivning
 
+Kurs
+- ID (PK)
+- UtbildningID (FK)
+- Namn (C#)
+- Beskrivning
+- startDatum
+- slutDatum
+
+Elev
 
 Elever
 - ID (PK)
 - Förnamn
 - Efternamn
 - Email
-- KlassID (FK)
+
+============================
+Avancerad Lösning
+Utbildning
+- ID (PK)
+- Namn (BUV25)
+- Beskrivning
 
 
 Klasser
 - ID (PK)
-- Namn
+- Namn (C#)
+- Beskrivning
+- startDatum
+- slutDatum
+KursUtbildning (M-M relation mellan Kurs och Utbildning)
 
+Elev
+- ID (PK)
+- Förnamn
+- Efternamn
+- Email
+ElevUtbildning (M-M relation mellan Elev och Utbildning)
 
 Kursledare
 - ID (PK)
 - Förnamn
 - Efternamn
 - Email
-
-            Install-Package Microsoft.Extensions.Configuration.Json
-            Install-Package Microsoft.EntityFrameworkCore.SqlServer
-            Install-Package Microsoft.EntityFrameworkCore.Tools
+KursKursledare (M-M relation mellan Kurs och Kursledare)
