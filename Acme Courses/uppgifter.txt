@@ -32,12 +32,14 @@ Utbildningar
 - Beskrivning
 - KursID (FK)
 - KlassID (FK)
-- KursledareID (FK)
+- KursledareID (FK
+
 
 Kurser
 - ID (PK)
 - Namn
 - Beskrivning
+
 
 Elever
 - ID (PK)
@@ -45,6 +47,7 @@ Elever
 - Efternamn
 - Email
 - KlassID (FK)
+
 
 Klasser
 - ID (PK)
