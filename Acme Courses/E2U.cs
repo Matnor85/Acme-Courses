@@ -7,7 +7,7 @@ namespace Acme_Courses
     internal class E2U
     {
         public int ID {  get; set; }
-        public int ElevID { get; set; } = null!;
-        public int UtbildningID { get; set; }=null!;
+        public int ElevID { get; set; }
+        public int UtbildningID { get; set; }
     }
 }

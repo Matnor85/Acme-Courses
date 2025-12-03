@@ -13,4 +13,5 @@ public class Kurs
     public string? Beskrivning { get; set; }
     public DateTime StartDatum { get; set; }
     public DateTime SlutDatum { get; set; }
+    public int ElevID { get; set; }
 }

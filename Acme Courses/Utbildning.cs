@@ -9,5 +9,5 @@ public class Utbildning
     public int ID { get; set; }
     public string? Namn { get; set; }
     public string? Beskrivning { get; set; }
-
+    public int KursID { get; set; }
 }
