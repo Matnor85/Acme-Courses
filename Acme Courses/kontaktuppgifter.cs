@@ -4,10 +4,10 @@ using System.Text;
 
 namespace Acme_Courses;
 
-public class kontaktuppgift
+public class KontaktUppgift
 {
     public int ID { get; set; }
     public string KontaktTyp { get; set; } = null!;
-    public string KontaktUppgift { get; set; } = null!;
+    public string KontaktInfo { get; set; } = null!;
     public int ElevID{ get; set; }
 }
