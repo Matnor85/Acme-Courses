@@ -8,7 +8,7 @@ public class Elev
 {
     public int ID { get; set; }
     public int UtbildningsID{ get; set; }
-    public string Förnamn{ get; set; }
-    public string Efternamn{ get; set; }
+    public string? Förnamn{ get; set; }
+    public string? Efternamn{ get; set; }
     public int KontaktUppgiftID { get; set; }
 }
