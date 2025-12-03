@@ -10,5 +10,5 @@ public class Elev
     public int UtbildningsID{ get; set; }
     public string Förnamn{ get; set; }
     public string Efternamn{ get; set; }
-    public int KontaktuppgifterID { get; set; }
+    public int KontaktUppgiftID { get; set; }
 }
