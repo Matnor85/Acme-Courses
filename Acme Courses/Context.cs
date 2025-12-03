@@ -27,5 +27,26 @@ public class ApplicationContext : DbContext
         var connStr = config.GetConnectionString("DefaultConnection");
         optionsBuilder.UseSqlServer(connStr);
     }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        // Specificerar vilken collation databasen ska använda
+        modelBuilder.UseCollation("Finnish_Swedish_CI_AS");
+
+        //// Specificerar vilken datatyp databasen ska använda för en specifik kolumn
+        //modelBuilder.Entity<Order>()
+        //.Property(o => o.PriceTotal)
+        //.HasColumnType(SqlDbType.Money.ToString());
+
+        // Specificerar data som en specifik tabell ska för-populeras med
+        modelBuilder.Entity<Utbildning>().HasData(
+        new Utbildning { ID = 1, Namn = "BUV25", Beskrivning = "Backend-Utvecklare" },
+        new Utbildning { ID = 2, Namn = "FUV25", Beskrivning = "Frontend-Utvecklare" },
+        new Utbildning { ID = 3, Namn = "FSUV25", Beskrivning = "Fullstack-Utvecklare" }
+        );
+    }
+
 }
 
