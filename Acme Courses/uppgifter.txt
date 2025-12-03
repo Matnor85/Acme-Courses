@@ -1,0 +1,58 @@
+﻿Grupparbete: Acme Courses
+
+Skapa en applikation som modellerar verksamheten för Acme Courses
+
+Bakgrund
+• Acme Courses håller flera utbildningar
+• Varje utbildning innehåller flera kurser (t.ex. C#, SQL, MVC etc.)
+• Varje utbildning har flera studerande kopplade till sig
+
+Uppgifter
+- Modellera databasen på papper
+a) Skriv ned en lista med vilka tabeller (och deras respektive fält) som behövs för att modellera scenariot
+b) Gör ev. korrigeringar till föregående lista efter en publik diskussion med klassen
+
+- Skapa ett konsoll-projekt som heter AcmeCourses
+
+- Följ samtliga punkter i förra slide-decket för att lägga till stöd för EF i projektet (denna gång med era egna entiteter –
+populera era tabellerna med lite exempel-data enligt punkt 5)
+
+- När man kör konsoll-applikationen ska man nu (med valfri meny-lösning) kunna visa upp innehållet i samtliga tabeller
+
+Om ni hinner:
+5. Använd EF:s asynkrona API:er
+6. Lägg till möjligheten att lägga till en ny kurs
+7. Utöka applikationen med stöd för att knyta en kursledare till varje kurs
+
+tabeller:
+
+Utbildningar
+- ID (PK)
+- Namn
+- Beskrivning
+- KursID (FK)
+- KlassID (FK)
+- KursledareID (FK)
+
+Kurser
+- ID (PK)
+- Namn
+- Beskrivning
+
+Elever
+- ID (PK)
+- Förnamn
+- Efternamn
+- Email
+- KlassID (FK)
+
+Klasser
+- ID (PK)
+- Namn
+
+
+Kursledare
+- ID (PK)
+- Förnamn
+- Efternamn
+- Email
