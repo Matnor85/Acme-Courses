@@ -11,4 +11,6 @@ public class Elev
     public string? Förnamn { get; set; }
     public string? Efternamn { get; set; }
     public int KontaktUppgiftID { get; set; }
+    public Utbildning? Utbildning { get; set; }
+    public List<Utbildning> Utbildningar { get; set; } = new();
 }
