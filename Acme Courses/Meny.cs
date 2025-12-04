@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-    
+
 
 namespace Acme_Courses;
 
@@ -145,9 +145,10 @@ internal class Meny
             ["studens",
             "",
             "1. Show all studens",
-            "2. Add student",
-            "3. Remove student",
-            "4. Back",
+            "2. Contact informations",
+            "3. Add student",
+            "4. Remove student",
+            "5. Back",
             "",
             "Please select an option: "];
         Console.Clear();
@@ -162,7 +163,7 @@ internal class Meny
                 //ShowAllStudents();
                 Console.Clear();
 
-                
+
                 var fullNames = context.Elever
                     .Select(e => $"{e.Förnamn} {e.Efternamn}")
                     .ToList();
@@ -184,16 +185,25 @@ internal class Meny
                 break;
             case ConsoleKey.D3:
             case ConsoleKey.NumPad3:
-                ShowAllEducations();
+                ContactInformations();
                 break;
             case ConsoleKey.D4:
             case ConsoleKey.NumPad4:
+                ShowAllEducations();
+                break;
+            case ConsoleKey.D5:
+            case ConsoleKey.NumPad5:
                 return;
             default:
                 ConsoleHelper.Sound();
                 ShowMainMenu();
                 break;
         }
+    }
+    public static void ContactInformations()
+    {
 
     }
+
+
 }
