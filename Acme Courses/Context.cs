@@ -44,12 +44,12 @@ public class ApplicationContext : DbContext
 
         // Kontaktuppgifter (seed) — så KontaktUppgiftID i elever refererar till existerande rader
         modelBuilder.Entity<KontaktUppgift>().HasData(
-            new KontaktUppgift { ID = 1, KontaktTyp = "E-post", KontaktInfo = "anna.andersson@example.com", ElevID = 1 },
-            new KontaktUppgift { ID = 2, KontaktTyp = "Telefon", KontaktInfo = "070-1111111", ElevID = 2 },
-            new KontaktUppgift { ID = 3, KontaktTyp = "E-post", KontaktInfo = "erik.eriksson@example.com", ElevID = 3 },
-            new KontaktUppgift { ID = 4, KontaktTyp = "Telefon", KontaktInfo = "070-2222222", ElevID = 4 },
-            new KontaktUppgift { ID = 5, KontaktTyp = "E-post", KontaktInfo = "lina.lind@example.com", ElevID = 5 },
-            new KontaktUppgift { ID = 6, KontaktTyp = "Telefon", KontaktInfo = "070-3333333", ElevID = 6 }
+            new KontaktUppgift { ID = 1, KontaktTyp = "E-post", KontaktInfo = "anna.andersson@example.com" },
+            new KontaktUppgift { ID = 2, KontaktTyp = "Telefon", KontaktInfo = "070-1111111" },
+            new KontaktUppgift { ID = 3, KontaktTyp = "E-post", KontaktInfo = "erik.eriksson@example.com" },
+            new KontaktUppgift { ID = 4, KontaktTyp = "Telefon", KontaktInfo = "070-2222222" },
+            new KontaktUppgift { ID = 5, KontaktTyp = "E-post", KontaktInfo = "lina.lind@example.com" },
+            new KontaktUppgift { ID = 6, KontaktTyp = "Telefon", KontaktInfo = "070-3333333" }
         );
 
         // Elever (seed)

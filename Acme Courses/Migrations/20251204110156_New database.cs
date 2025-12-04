@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Acme_Courses.Migrations
 {
     /// <inheritdoc />
-    public partial class Newdatabse : Migration
+    public partial class Newdatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,8 +20,7 @@ namespace Acme_Courses.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     KontaktTyp = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    KontaktInfo = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ElevID = table.Column<int>(type: "int", nullable: false)
+                    KontaktInfo = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -112,15 +111,15 @@ namespace Acme_Courses.Migrations
 
             migrationBuilder.InsertData(
                 table: "Kontaktuppgifter",
-                columns: new[] { "ID", "ElevID", "KontaktInfo", "KontaktTyp" },
+                columns: new[] { "ID", "KontaktInfo", "KontaktTyp" },
                 values: new object[,]
                 {
-                    { 1, 1, "anna.andersson@example.com", "E-post" },
-                    { 2, 2, "070-1111111", "Telefon" },
-                    { 3, 3, "erik.eriksson@example.com", "E-post" },
-                    { 4, 4, "070-2222222", "Telefon" },
-                    { 5, 5, "lina.lind@example.com", "E-post" },
-                    { 6, 6, "070-3333333", "Telefon" }
+                    { 1, "anna.andersson@example.com", "E-post" },
+                    { 2, "070-1111111", "Telefon" },
+                    { 3, "erik.eriksson@example.com", "E-post" },
+                    { 4, "070-2222222", "Telefon" },
+                    { 5, "lina.lind@example.com", "E-post" },
+                    { 6, "070-3333333", "Telefon" }
                 });
 
             migrationBuilder.InsertData(

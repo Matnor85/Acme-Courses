@@ -99,9 +99,6 @@ namespace Acme_Courses.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<int>("ElevID")
-                        .HasColumnType("int");
-
                     b.Property<string>("KontaktInfo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -118,42 +115,36 @@ namespace Acme_Courses.Migrations
                         new
                         {
                             ID = 1,
-                            ElevID = 1,
                             KontaktInfo = "anna.andersson@example.com",
                             KontaktTyp = "E-post"
                         },
                         new
                         {
                             ID = 2,
-                            ElevID = 2,
                             KontaktInfo = "070-1111111",
                             KontaktTyp = "Telefon"
                         },
                         new
                         {
                             ID = 3,
-                            ElevID = 3,
                             KontaktInfo = "erik.eriksson@example.com",
                             KontaktTyp = "E-post"
                         },
                         new
                         {
                             ID = 4,
-                            ElevID = 4,
                             KontaktInfo = "070-2222222",
                             KontaktTyp = "Telefon"
                         },
                         new
                         {
                             ID = 5,
-                            ElevID = 5,
                             KontaktInfo = "lina.lind@example.com",
                             KontaktTyp = "E-post"
                         },
                         new
                         {
                             ID = 6,
-                            ElevID = 6,
                             KontaktInfo = "070-3333333",
                             KontaktTyp = "Telefon"
                         });
