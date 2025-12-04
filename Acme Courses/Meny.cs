@@ -162,8 +162,13 @@ internal class Meny
                 //ShowAllStudents();
                 Console.Clear();
                 var q = context.Elever;
-                    foreach(var item in q)
-                    ConsoleHelper.CenterAll($"Förnamn: {item.Förnamn}");
+                List<String> list = new List<String>();
+                int i = 0;
+                foreach (var item in q)
+                {
+                    list.Add(item.Förnamn);
+                    ConsoleHelper.CenterBlock(list);
+                }
 
                 Console.ReadLine();
                 break;
