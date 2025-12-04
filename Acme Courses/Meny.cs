@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
 
@@ -86,7 +88,7 @@ internal class Meny
 
                 ConsoleHelper.CenterAll("Select education for information:\n");
                 ConsoleHelper.SetCursor(13, 0);
-                var input = int.Parse(Console.ReadLine());
+                var input = int.Parse(Console.ReadLine()!);
 
                 var utbildning = context.Utbildningar.Find(input);
                 var qa = context.Utbildningar
@@ -200,7 +202,6 @@ internal class Meny
         {
             case ConsoleKey.D1:
             case ConsoleKey.NumPad1:
-                //ShowAllStudents();
                 Console.Clear();
 
 
@@ -208,7 +209,7 @@ internal class Meny
                     .Select(e => $"{e.Förnamn} {e.Efternamn}")
                     .ToList();
 
-                if (fullNames.Count == 0)
+                if (fullNames.IsNullOrEmpty())
                 {
                     ConsoleHelper.CenterAll("Inga studenter hittades.");
                 }
@@ -244,21 +245,19 @@ internal class Meny
     {
         Console.Clear();
         var elever = context.Elever.Include(s => s.KontaktUppgifter).ToList();
-
+        List<string> elevLísta = new List<string>();
         foreach (var elev in elever)
         {
-            context.Entry(elev).Collection(e => e.KontaktUppgifter).Load();
-        }
-        var q = context.Kontaktuppgifter
-            .Join(context.Elever, k => k.ElevID, e => e.ID, (k, e) => new
+            var q = $"{elev.Förnamn} {elev.Efternamn}";
+            elevLísta.Add(q);
+
+            foreach (var kontakt in elev.KontaktUppgifter)
             {
-                FullName = $"{e.Förnamn} {e.Efternamn}",
-                k.KontaktTyp,
-                k.KontaktInfo
-            })
-            .ToList();
-        var b = q.Select(item => $"{item.FullName} - {item.KontaktTyp}: {item.KontaktInfo}").ToList();
-        ConsoleHelper.CenterBlock(b);
+                var b = $" {kontakt.KontaktTyp}: {kontakt.KontaktInfo}";
+                elevLísta.Add(b);
+            }
+        }
+        ConsoleHelper.CenterBlock(elevLísta);
         Console.ReadLine();
     }
 
