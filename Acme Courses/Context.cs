@@ -14,7 +14,7 @@ public class ApplicationContext : DbContext
     public DbSet<Elev> Elever { get; set; } = null!;
     public DbSet<Kurs> Kurser { get; set; } = null!;
     public DbSet<Utbildning> Utbildningar { get; set; } = null!;
-    public DbSet<KontaktUppgift> Kontaktuppgift { get; set; } = null!;
+    public DbSet<KontaktUppgift> Kontaktuppgifter { get; set; } = null!;
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
