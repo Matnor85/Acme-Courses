@@ -4,7 +4,8 @@
     {
         static void Main(string[] args)
         {
-            Meny ShowMainMenu();
+            Meny meny = new Meny();
+            Meny.ShowMainMenu();
         }
     }
 }

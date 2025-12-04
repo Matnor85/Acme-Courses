@@ -1,4 +1,4 @@
-﻿namespace Hangman_The_Fun_Version;
+﻿namespace Acme_Courses;
 // Denna klassen använs till att justera text och markören
 internal class ConsoleHelper
 {
