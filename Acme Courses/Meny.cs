@@ -8,6 +8,7 @@ namespace Acme_Courses;
 
 internal class Meny
 {
+    static ApplicationContext context = new ApplicationContext();
     public static void ShowMainMenu()
     {
         bool runMenu = true;
@@ -158,7 +159,12 @@ internal class Meny
         {
             case ConsoleKey.D1:
             case ConsoleKey.NumPad1:
-                ShowAllStudents();
+                //ShowAllStudents();
+                var q = context.Elever;
+                    foreach(var item in q)
+                    Console.WriteLine(item.Förnamn);
+
+                Console.ReadLine();
                 break;
             case ConsoleKey.D2:
             case ConsoleKey.NumPad2:
