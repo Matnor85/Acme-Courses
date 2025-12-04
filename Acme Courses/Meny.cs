@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -203,6 +204,12 @@ internal class Meny
     public static void ContactInformations()
     {
         Console.Clear();
+        var elever = context.Elever.Include(s => s.KontaktUppgifter).ToList();
+
+        foreach (var elev in elever)
+        {
+            context.Entry(elev).Collection(e => e.KontaktUppgifter).Load();
+        }
         var q = context.Kontaktuppgifter
             .Join(context.Elever, k => k.ElevID, e => e.ID, (k, e) => new
             {
@@ -211,7 +218,8 @@ internal class Meny
                 k.KontaktInfo
             })
             .ToList();
-        ConsoleHelper.CenterBlock(q.Select(item => $"{item.FullName} - {item.KontaktTyp}: {item.KontaktInfo}").ToList());
+           var b = q.Select(item => $"{item.FullName} - {item.KontaktTyp}: {item.KontaktInfo}").ToList();
+        ConsoleHelper.CenterBlock(b);
         Console.ReadLine();
     }
 
