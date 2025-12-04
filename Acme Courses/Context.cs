@@ -35,11 +35,6 @@ public class ApplicationContext : DbContext
         // Specificerar vilken collation databasen ska använda
         modelBuilder.UseCollation("Finnish_Swedish_CI_AS");
 
-        //// Specificerar vilken datatyp databasen ska använda för en specifik kolumn
-        //modelBuilder.Entity<Order>()
-        //.Property(o => o.PriceTotal)
-        //.HasColumnType(SqlDbType.Money.ToString());
-
         // Specificerar data som en specifik tabell ska för-populeras med
         modelBuilder.Entity<Utbildning>().HasData(
         new Utbildning { ID = 1, Namn = "BUV25", Beskrivning = "Backend-Utvecklare" },
