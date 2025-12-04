@@ -63,9 +63,10 @@ internal class Meny
            ["educations",
             "",
             "1. Show all educations",
-            "2. Add educations",
-            "3. Remove educations",
-            "4. Back",
+            "2. Add education",
+            "3. Remove education",
+            "4. Search education",
+            "5. Back",
             "",
             "Please select an option: "];
         Console.Clear();
@@ -77,25 +78,63 @@ internal class Meny
         {
             case ConsoleKey.D1:
             case ConsoleKey.NumPad1:
-                ShowAllStudents();
+                Console.Clear();
+                var utbildningar = context.Utbildningar
+                .Select(u => $"{u.ID}. {u.Namn}")
+                .ToList();
+                ConsoleHelper.CenterAll(string.Join("\n", utbildningar));
+
+                ConsoleHelper.CenterAll("Select education for information:\n");
+                ConsoleHelper.SetCursor(13, 0);
+                var input = int.Parse(Console.ReadLine());
+
+                var utbildning = context.Utbildningar.Find(input);
+                var qa = context.Utbildningar
+                    .Where(u => u.ID == input)
+                    .Select(u => new { u.ID, u.Namn, u.Beskrivning })
+                    .ToList();
+                if (utbildning is null)
+                {
+                    Console.WriteLine("Not found");
+                    Console.ReadLine();
+                    break;
+                }
+                Console.Clear();
+                var utbild = new[]
+                {
+                    $"{utbildning.ID} - {utbildning.Namn}",
+                    "",
+                    "Information:",
+                    utbildning.Beskrivning ?? "(No inforamtion for this education)",
+                    "",
+                    "Press Enter to return."
+                };
+                ConsoleHelper.CenterAll(string.Join("\n", utbild));
+                Console.ReadLine();
                 break;
             case ConsoleKey.D2:
             case ConsoleKey.NumPad2:
-                
+
                 break;
             case ConsoleKey.D3:
             case ConsoleKey.NumPad3:
-                
+
                 break;
             case ConsoleKey.D4:
             case ConsoleKey.NumPad4:
-                return;
-            default:
-                ConsoleHelper.Sound();
-                ShowMainMenu();
+                
                 break;
+                
+            case ConsoleKey.D5:
+            case ConsoleKey.NumPad5:
+
+                    default:
+                ConsoleHelper.Sound();
+                    ShowMainMenu();
+                    break;
+                }
         }
-    }
+    
 
     private static void ShowAllCourses()
     {
@@ -186,11 +225,11 @@ internal class Meny
                 break;
             case ConsoleKey.D3:
             case ConsoleKey.NumPad3:
-                
+
                 break;
             case ConsoleKey.D4:
             case ConsoleKey.NumPad4:
-                
+
                 break;
             case ConsoleKey.D5:
             case ConsoleKey.NumPad5:
@@ -218,7 +257,7 @@ internal class Meny
                 k.KontaktInfo
             })
             .ToList();
-           var b = q.Select(item => $"{item.FullName} - {item.KontaktTyp}: {item.KontaktInfo}").ToList();
+        var b = q.Select(item => $"{item.FullName} - {item.KontaktTyp}: {item.KontaktInfo}").ToList();
         ConsoleHelper.CenterBlock(b);
         Console.ReadLine();
     }
