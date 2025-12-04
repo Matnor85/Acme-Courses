@@ -202,7 +202,17 @@ internal class Meny
     }
     public static void ContactInformations()
     {
-
+        Console.Clear();
+        var q = context.Kontaktuppgifter
+            .Join(context.Elever, k => k.ElevID, e => e.ID, (k, e) => new
+            {
+                FullName = $"{e.Förnamn} {e.Efternamn}",
+                k.KontaktTyp,
+                k.KontaktInfo
+            })
+            .ToList();
+        ConsoleHelper.CenterBlock(q.Select(item => $"{item.FullName} - {item.KontaktTyp}: {item.KontaktInfo}").ToList());
+        Console.ReadLine();
     }
 
 
