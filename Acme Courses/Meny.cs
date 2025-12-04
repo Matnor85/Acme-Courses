@@ -58,11 +58,11 @@ internal class Meny
     {
         Console.Clear();
         string[] menu =
-           ["Acme school",
+           ["educations",
             "",
-            "1. Show all studens",
-            "2. Add student",
-            "3. Remove student",
+            "1. Show all educations",
+            "2. Add educations",
+            "3. Remove educations",
             "4. Back",
             "",
             "Please select an option: "];
@@ -99,7 +99,7 @@ internal class Meny
     {
         Console.Clear();
         string[] menu =
-           ["Acme school",
+           ["courses",
             "",
             "1. Show all courses",
             "2. Add course",
@@ -141,12 +141,12 @@ internal class Meny
     {
         Console.Clear();
         string[] menu =
-           ["Acme school",
+            ["studens",
             "",
             "1. Show all studens",
-            "2. Show all courses",
-            "3. Show all educations",
-            "4. Exit",
+            "2. Add student",
+            "3. Remove student",
+            "4. Back",
             "",
             "Please select an option: "];
         Console.Clear();
@@ -170,8 +170,7 @@ internal class Meny
                 break;
             case ConsoleKey.D4:
             case ConsoleKey.NumPad4:
-                Environment.Exit(0);
-                break;
+                return;
             default:
                 ConsoleHelper.Sound();
                 ShowMainMenu();
