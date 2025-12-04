@@ -10,4 +10,5 @@ public class KontaktUppgift
     public string KontaktTyp { get; set; } = null!;
     public string KontaktInfo { get; set; } = null!;
     public int ElevID { get; set; }
+    public List<Elev> Elever { get; set; } = new List<Elev>();
 }
