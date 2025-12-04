@@ -160,9 +160,10 @@ internal class Meny
             case ConsoleKey.D1:
             case ConsoleKey.NumPad1:
                 //ShowAllStudents();
+                Console.Clear();
                 var q = context.Elever;
                     foreach(var item in q)
-                    Console.WriteLine(item.Förnamn);
+                    ConsoleHelper.CenterAll($"Förnamn: {item.Förnamn}");
 
                 Console.ReadLine();
                 break;
