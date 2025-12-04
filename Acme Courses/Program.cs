@@ -4,6 +4,7 @@
     {
         static void Main(string[] args)
         {
+            Console.CursorVisible = false;
             Meny meny = new Meny();
             Meny.ShowMainMenu();
         }

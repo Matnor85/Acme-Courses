@@ -161,13 +161,19 @@ internal class Meny
             case ConsoleKey.NumPad1:
                 //ShowAllStudents();
                 Console.Clear();
-                var q = context.Elever;
-                List<String> list = new List<String>();
-                int i = 0;
-                foreach (var item in q)
+
+                
+                var fullNames = context.Elever
+                    .Select(e => $"{e.Förnamn} {e.Efternamn}")
+                    .ToList();
+
+                if (fullNames.Count == 0)
                 {
-                    list.Add(item.Förnamn);
-                    ConsoleHelper.CenterBlock(list);
+                    ConsoleHelper.CenterAll("Inga studenter hittades.");
+                }
+                else
+                {
+                    ConsoleHelper.CenterBlock(fullNames);
                 }
 
                 Console.ReadLine();
