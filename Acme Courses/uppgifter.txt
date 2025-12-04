@@ -26,40 +26,6 @@ Om ni hinner:
 
 tabeller:
 
-Utbildning
-- ID (PK)
-- KlassID (FK)
-- Namn (BUV25)
-- Beskrivning
-- KursledareID (FK)
-
-Kurs
-- ID (PK)
-- UtbildningID (FK)
-- Namn
-- Beskrivning
-- startDatum
-- slutDatum
-
-Elev
-- ID (PK)
-- KlassID (FK)
-- Förnamn
-- Efternamn
-- Email
-- KursledareID (FK
-
-
-Klass
-- ID (PK)
-- Namn
-
-Kursledare //
-- ID (PK)
-- Förnamn
-- Efternamn
-- Email
-
 Enkel Lösning
 Utbildning
 - ID (PK)
