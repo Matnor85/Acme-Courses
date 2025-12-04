@@ -80,11 +80,11 @@ internal class Meny
                 break;
             case ConsoleKey.D2:
             case ConsoleKey.NumPad2:
-                ShowAllCourses();
+                
                 break;
             case ConsoleKey.D3:
             case ConsoleKey.NumPad3:
-                ShowAllEducations();
+                
                 break;
             case ConsoleKey.D4:
             case ConsoleKey.NumPad4:
@@ -181,15 +181,15 @@ internal class Meny
                 break;
             case ConsoleKey.D2:
             case ConsoleKey.NumPad2:
-                ShowAllCourses();
+                ContactInformations();
                 break;
             case ConsoleKey.D3:
             case ConsoleKey.NumPad3:
-                ContactInformations();
+                
                 break;
             case ConsoleKey.D4:
             case ConsoleKey.NumPad4:
-                ShowAllEducations();
+                
                 break;
             case ConsoleKey.D5:
             case ConsoleKey.NumPad5:
