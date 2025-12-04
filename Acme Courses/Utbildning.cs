@@ -10,6 +10,6 @@ public class Utbildning
     public string? Namn { get; set; }
     public string? Beskrivning { get; set; }
 
-    public List<Kurs> Kurser { get; set; } = new();
-    public List<Elev> Elever { get; set; } = new();
+    public List<Kurs> Kurser { get; set; } = new List<Kurs>();
+    public List<Elev> Elever { get; set; } = new List<Elev>();
 }
