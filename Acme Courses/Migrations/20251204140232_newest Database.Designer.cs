@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Acme_Courses.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20251204110156_New database")]
-    partial class Newdatabase
+    [Migration("20251204140232_newest Database")]
+    partial class newestDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -45,8 +45,6 @@ namespace Acme_Courses.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("KontaktUppgiftID");
-
                     b.ToTable("Elever");
 
                     b.HasData(
@@ -55,42 +53,42 @@ namespace Acme_Courses.Migrations
                             ID = 1,
                             Efternamn = "Andersson",
                             Förnamn = "Anna",
-                            KontaktUppgiftID = 1
+                            KontaktUppgiftID = 0
                         },
                         new
                         {
                             ID = 2,
                             Efternamn = "Berg",
                             Förnamn = "Björn",
-                            KontaktUppgiftID = 2
+                            KontaktUppgiftID = 0
                         },
                         new
                         {
                             ID = 3,
                             Efternamn = "Eriksson",
                             Förnamn = "Erik",
-                            KontaktUppgiftID = 3
+                            KontaktUppgiftID = 0
                         },
                         new
                         {
                             ID = 4,
                             Efternamn = "Svensson",
                             Förnamn = "Sara",
-                            KontaktUppgiftID = 4
+                            KontaktUppgiftID = 0
                         },
                         new
                         {
                             ID = 5,
                             Efternamn = "Lind",
                             Förnamn = "Lina",
-                            KontaktUppgiftID = 5
+                            KontaktUppgiftID = 0
                         },
                         new
                         {
                             ID = 6,
                             Efternamn = "Olsson",
                             Förnamn = "Oskar",
-                            KontaktUppgiftID = 6
+                            KontaktUppgiftID = 0
                         });
                 });
 
@@ -102,6 +100,9 @@ namespace Acme_Courses.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
+                    b.Property<int>("ElevID")
+                        .HasColumnType("int");
+
                     b.Property<string>("KontaktInfo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -112,42 +113,50 @@ namespace Acme_Courses.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("ElevID");
+
                     b.ToTable("Kontaktuppgifter");
 
                     b.HasData(
                         new
                         {
                             ID = 1,
+                            ElevID = 1,
                             KontaktInfo = "anna.andersson@example.com",
                             KontaktTyp = "E-post"
                         },
                         new
                         {
                             ID = 2,
+                            ElevID = 2,
                             KontaktInfo = "070-1111111",
                             KontaktTyp = "Telefon"
                         },
                         new
                         {
                             ID = 3,
+                            ElevID = 3,
                             KontaktInfo = "erik.eriksson@example.com",
                             KontaktTyp = "E-post"
                         },
                         new
                         {
                             ID = 4,
+                            ElevID = 4,
                             KontaktInfo = "070-2222222",
                             KontaktTyp = "Telefon"
                         },
                         new
                         {
                             ID = 5,
+                            ElevID = 5,
                             KontaktInfo = "lina.lind@example.com",
                             KontaktTyp = "E-post"
                         },
                         new
                         {
                             ID = 6,
+                            ElevID = 6,
                             KontaktInfo = "070-3333333",
                             KontaktTyp = "Telefon"
                         });
@@ -293,13 +302,15 @@ namespace Acme_Courses.Migrations
                     b.ToTable("ElevUtbildning");
                 });
 
-            modelBuilder.Entity("Acme_Courses.Elev", b =>
+            modelBuilder.Entity("Acme_Courses.KontaktUppgift", b =>
                 {
-                    b.HasOne("Acme_Courses.KontaktUppgift", null)
-                        .WithMany("Elever")
-                        .HasForeignKey("KontaktUppgiftID")
+                    b.HasOne("Acme_Courses.Elev", "Elev")
+                        .WithMany("KontaktUppgifter")
+                        .HasForeignKey("ElevID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Elev");
                 });
 
             modelBuilder.Entity("Acme_Courses.Kurs", b =>
@@ -328,9 +339,9 @@ namespace Acme_Courses.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Acme_Courses.KontaktUppgift", b =>
+            modelBuilder.Entity("Acme_Courses.Elev", b =>
                 {
-                    b.Navigation("Elever");
+                    b.Navigation("KontaktUppgifter");
                 });
 
             modelBuilder.Entity("Acme_Courses.Utbildning", b =>

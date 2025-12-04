@@ -44,22 +44,22 @@ public class ApplicationContext : DbContext
 
         // Kontaktuppgifter (seed) — så KontaktUppgiftID i elever refererar till existerande rader
         modelBuilder.Entity<KontaktUppgift>().HasData(
-            new KontaktUppgift { ID = 1, KontaktTyp = "E-post", KontaktInfo = "anna.andersson@example.com" },
-            new KontaktUppgift { ID = 2, KontaktTyp = "Telefon", KontaktInfo = "070-1111111" },
-            new KontaktUppgift { ID = 3, KontaktTyp = "E-post", KontaktInfo = "erik.eriksson@example.com" },
-            new KontaktUppgift { ID = 4, KontaktTyp = "Telefon", KontaktInfo = "070-2222222" },
-            new KontaktUppgift { ID = 5, KontaktTyp = "E-post", KontaktInfo = "lina.lind@example.com" },
-            new KontaktUppgift { ID = 6, KontaktTyp = "Telefon", KontaktInfo = "070-3333333" }
+            new KontaktUppgift { ID = 1, KontaktTyp = "E-post", KontaktInfo = "anna.andersson@example.com", ElevID = 1 },
+            new KontaktUppgift { ID = 2, KontaktTyp = "Telefon", KontaktInfo = "070-1111111", ElevID = 2 },
+            new KontaktUppgift { ID = 3, KontaktTyp = "E-post", KontaktInfo = "erik.eriksson@example.com", ElevID = 3 },
+            new KontaktUppgift { ID = 4, KontaktTyp = "Telefon", KontaktInfo = "070-2222222", ElevID = 4},
+            new KontaktUppgift { ID = 5, KontaktTyp = "E-post", KontaktInfo = "lina.lind@example.com", ElevID = 5 },
+            new KontaktUppgift { ID = 6, KontaktTyp = "Telefon", KontaktInfo = "070-3333333", ElevID = 6 }
         );
 
         // Elever (seed)
         modelBuilder.Entity<Elev>().HasData(
-            new Elev { ID = 1, Förnamn = "Anna", Efternamn = "Andersson", KontaktUppgiftID = 1 },
-            new Elev { ID = 2, Förnamn = "Björn", Efternamn = "Berg", KontaktUppgiftID = 2 },
-            new Elev { ID = 3, Förnamn = "Erik", Efternamn = "Eriksson", KontaktUppgiftID = 3 },
-            new Elev { ID = 4, Förnamn = "Sara", Efternamn = "Svensson", KontaktUppgiftID = 4 },
-            new Elev { ID = 5, Förnamn = "Lina", Efternamn = "Lind", KontaktUppgiftID = 5 },
-            new Elev { ID = 6, Förnamn = "Oskar", Efternamn = "Olsson", KontaktUppgiftID = 6 }
+            new Elev { ID = 1, Förnamn = "Anna", Efternamn = "Andersson"},
+            new Elev { ID = 2, Förnamn = "Björn", Efternamn = "Berg"},
+            new Elev { ID = 3, Förnamn = "Erik", Efternamn = "Eriksson"},
+            new Elev { ID = 4, Förnamn = "Sara", Efternamn = "Svensson"},
+            new Elev { ID = 5, Förnamn = "Lina", Efternamn = "Lind"},
+            new Elev { ID = 6, Förnamn = "Oskar", Efternamn = "Olsson"}
         );
 
         // Kurser (seed)

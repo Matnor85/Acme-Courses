@@ -8,23 +8,24 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Acme_Courses.Migrations
 {
     /// <inheritdoc />
-    public partial class Newdatabase : Migration
+    public partial class newestDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Kontaktuppgifter",
+                name: "Elever",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    KontaktTyp = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    KontaktInfo = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Förnamn = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Efternamn = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    KontaktUppgiftID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Kontaktuppgifter", x => x.ID);
+                    table.PrimaryKey("PK_Elever", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -42,45 +43,22 @@ namespace Acme_Courses.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Elever",
+                name: "Kontaktuppgifter",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Förnamn = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Efternamn = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    KontaktUppgiftID = table.Column<int>(type: "int", nullable: false)
+                    KontaktTyp = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    KontaktInfo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ElevID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Elever", x => x.ID);
+                    table.PrimaryKey("PK_Kontaktuppgifter", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Elever_Kontaktuppgifter_KontaktUppgiftID",
-                        column: x => x.KontaktUppgiftID,
-                        principalTable: "Kontaktuppgifter",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Kurser",
-                columns: table => new
-                {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UtbildningID = table.Column<int>(type: "int", nullable: false),
-                    Namn = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Beskrivning = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    StartDatum = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    SlutDatum = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Kurser", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_Kurser_Utbildningar_UtbildningID",
-                        column: x => x.UtbildningID,
-                        principalTable: "Utbildningar",
+                        name: "FK_Kontaktuppgifter_Elever_ElevID",
+                        column: x => x.ElevID,
+                        principalTable: "Elever",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -109,17 +87,40 @@ namespace Acme_Courses.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Kurser",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UtbildningID = table.Column<int>(type: "int", nullable: false),
+                    Namn = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Beskrivning = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    StartDatum = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    SlutDatum = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Kurser", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Kurser_Utbildningar_UtbildningID",
+                        column: x => x.UtbildningID,
+                        principalTable: "Utbildningar",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
-                table: "Kontaktuppgifter",
-                columns: new[] { "ID", "KontaktInfo", "KontaktTyp" },
+                table: "Elever",
+                columns: new[] { "ID", "Efternamn", "Förnamn", "KontaktUppgiftID" },
                 values: new object[,]
                 {
-                    { 1, "anna.andersson@example.com", "E-post" },
-                    { 2, "070-1111111", "Telefon" },
-                    { 3, "erik.eriksson@example.com", "E-post" },
-                    { 4, "070-2222222", "Telefon" },
-                    { 5, "lina.lind@example.com", "E-post" },
-                    { 6, "070-3333333", "Telefon" }
+                    { 1, "Andersson", "Anna", 0 },
+                    { 2, "Berg", "Björn", 0 },
+                    { 3, "Eriksson", "Erik", 0 },
+                    { 4, "Svensson", "Sara", 0 },
+                    { 5, "Lind", "Lina", 0 },
+                    { 6, "Olsson", "Oskar", 0 }
                 });
 
             migrationBuilder.InsertData(
@@ -133,16 +134,16 @@ namespace Acme_Courses.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Elever",
-                columns: new[] { "ID", "Efternamn", "Förnamn", "KontaktUppgiftID" },
+                table: "Kontaktuppgifter",
+                columns: new[] { "ID", "ElevID", "KontaktInfo", "KontaktTyp" },
                 values: new object[,]
                 {
-                    { 1, "Andersson", "Anna", 1 },
-                    { 2, "Berg", "Björn", 2 },
-                    { 3, "Eriksson", "Erik", 3 },
-                    { 4, "Svensson", "Sara", 4 },
-                    { 5, "Lind", "Lina", 5 },
-                    { 6, "Olsson", "Oskar", 6 }
+                    { 1, 1, "anna.andersson@example.com", "E-post" },
+                    { 2, 2, "070-1111111", "Telefon" },
+                    { 3, 3, "erik.eriksson@example.com", "E-post" },
+                    { 4, 4, "070-2222222", "Telefon" },
+                    { 5, 5, "lina.lind@example.com", "E-post" },
+                    { 6, 6, "070-3333333", "Telefon" }
                 });
 
             migrationBuilder.InsertData(
@@ -159,14 +160,14 @@ namespace Acme_Courses.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Elever_KontaktUppgiftID",
-                table: "Elever",
-                column: "KontaktUppgiftID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_ElevUtbildning_UtbildningarID",
                 table: "ElevUtbildning",
                 column: "UtbildningarID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Kontaktuppgifter_ElevID",
+                table: "Kontaktuppgifter",
+                column: "ElevID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Kurser_UtbildningID",
@@ -181,6 +182,9 @@ namespace Acme_Courses.Migrations
                 name: "ElevUtbildning");
 
             migrationBuilder.DropTable(
+                name: "Kontaktuppgifter");
+
+            migrationBuilder.DropTable(
                 name: "Kurser");
 
             migrationBuilder.DropTable(
@@ -188,9 +192,6 @@ namespace Acme_Courses.Migrations
 
             migrationBuilder.DropTable(
                 name: "Utbildningar");
-
-            migrationBuilder.DropTable(
-                name: "Kontaktuppgifter");
         }
     }
 }
