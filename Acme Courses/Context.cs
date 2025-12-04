@@ -54,12 +54,12 @@ public class ApplicationContext : DbContext
 
         // Elever (seed)
         modelBuilder.Entity<Elev>().HasData(
-            new Elev { ID = 1, UtbildningsID = 1, Förnamn = "Anna", Efternamn = "Andersson", KontaktUppgiftID = 1 },
-            new Elev { ID = 2, UtbildningsID = 1, Förnamn = "Björn", Efternamn = "Berg", KontaktUppgiftID = 2 },
-            new Elev { ID = 3, UtbildningsID = 2, Förnamn = "Erik", Efternamn = "Eriksson", KontaktUppgiftID = 3 },
-            new Elev { ID = 4, UtbildningsID = 2, Förnamn = "Sara", Efternamn = "Svensson", KontaktUppgiftID = 4 },
-            new Elev { ID = 5, UtbildningsID = 3, Förnamn = "Lina", Efternamn = "Lind", KontaktUppgiftID = 5 },
-            new Elev { ID = 6, UtbildningsID = 3, Förnamn = "Oskar", Efternamn = "Olsson", KontaktUppgiftID = 6 }
+            new Elev { ID = 1, Förnamn = "Anna", Efternamn = "Andersson", KontaktUppgiftID = 1 },
+            new Elev { ID = 2, Förnamn = "Björn", Efternamn = "Berg", KontaktUppgiftID = 2 },
+            new Elev { ID = 3, Förnamn = "Erik", Efternamn = "Eriksson", KontaktUppgiftID = 3 },
+            new Elev { ID = 4, Förnamn = "Sara", Efternamn = "Svensson", KontaktUppgiftID = 4 },
+            new Elev { ID = 5, Förnamn = "Lina", Efternamn = "Lind", KontaktUppgiftID = 5 },
+            new Elev { ID = 6, Förnamn = "Oskar", Efternamn = "Olsson", KontaktUppgiftID = 6 }
         );
 
         // Kurser (seed)

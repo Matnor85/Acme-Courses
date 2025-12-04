@@ -4,7 +4,6 @@ using Acme_Courses;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -12,11 +11,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Acme_Courses.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20251204095146_new list to kontaltuppgifter")]
-    partial class newlisttokontaltuppgifter
+    partial class ApplicationContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,14 +40,55 @@ namespace Acme_Courses.Migrations
                     b.Property<int>("KontaktUppgiftID")
                         .HasColumnType("int");
 
-                    b.Property<int>("UtbildningsID")
-                        .HasColumnType("int");
-
                     b.HasKey("ID");
 
                     b.HasIndex("KontaktUppgiftID");
 
                     b.ToTable("Elever");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Efternamn = "Andersson",
+                            Förnamn = "Anna",
+                            KontaktUppgiftID = 1
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Efternamn = "Berg",
+                            Förnamn = "Björn",
+                            KontaktUppgiftID = 2
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Efternamn = "Eriksson",
+                            Förnamn = "Erik",
+                            KontaktUppgiftID = 3
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Efternamn = "Svensson",
+                            Förnamn = "Sara",
+                            KontaktUppgiftID = 4
+                        },
+                        new
+                        {
+                            ID = 5,
+                            Efternamn = "Lind",
+                            Förnamn = "Lina",
+                            KontaktUppgiftID = 5
+                        },
+                        new
+                        {
+                            ID = 6,
+                            Efternamn = "Olsson",
+                            Förnamn = "Oskar",
+                            KontaktUppgiftID = 6
+                        });
                 });
 
             modelBuilder.Entity("Acme_Courses.KontaktUppgift", b =>
@@ -75,6 +113,50 @@ namespace Acme_Courses.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Kontaktuppgifter");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            ElevID = 1,
+                            KontaktInfo = "anna.andersson@example.com",
+                            KontaktTyp = "E-post"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            ElevID = 2,
+                            KontaktInfo = "070-1111111",
+                            KontaktTyp = "Telefon"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            ElevID = 3,
+                            KontaktInfo = "erik.eriksson@example.com",
+                            KontaktTyp = "E-post"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            ElevID = 4,
+                            KontaktInfo = "070-2222222",
+                            KontaktTyp = "Telefon"
+                        },
+                        new
+                        {
+                            ID = 5,
+                            ElevID = 5,
+                            KontaktInfo = "lina.lind@example.com",
+                            KontaktTyp = "E-post"
+                        },
+                        new
+                        {
+                            ID = 6,
+                            ElevID = 6,
+                            KontaktInfo = "070-3333333",
+                            KontaktTyp = "Telefon"
+                        });
                 });
 
             modelBuilder.Entity("Acme_Courses.Kurs", b =>
@@ -105,6 +187,62 @@ namespace Acme_Courses.Migrations
                     b.HasIndex("UtbildningID");
 
                     b.ToTable("Kurser");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Beskrivning = "Introduktion till C# och .NET",
+                            Namn = "C# Grund",
+                            SlutDatum = new DateTime(2025, 12, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            StartDatum = new DateTime(2025, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UtbildningID = 1
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Beskrivning = "SQL Server och EF Core",
+                            Namn = "SQL Grund",
+                            SlutDatum = new DateTime(2025, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            StartDatum = new DateTime(2025, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UtbildningID = 1
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Beskrivning = "HTML, CSS och JavaScript",
+                            Namn = "Frontend 1",
+                            SlutDatum = new DateTime(2025, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            StartDatum = new DateTime(2025, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UtbildningID = 2
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Beskrivning = "Komponenter och state",
+                            Namn = "React Grund",
+                            SlutDatum = new DateTime(2025, 12, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            StartDatum = new DateTime(2025, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UtbildningID = 2
+                        },
+                        new
+                        {
+                            ID = 5,
+                            Beskrivning = "Bygg en komplett webbapplikation",
+                            Namn = "Fullstack Projekt",
+                            SlutDatum = new DateTime(2026, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            StartDatum = new DateTime(2025, 9, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UtbildningID = 3
+                        },
+                        new
+                        {
+                            ID = 6,
+                            Beskrivning = "CI/CD och deployment",
+                            Namn = "DevOps Introduktion",
+                            SlutDatum = new DateTime(2026, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            StartDatum = new DateTime(2025, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UtbildningID = 3
+                        });
                 });
 
             modelBuilder.Entity("Acme_Courses.Utbildning", b =>

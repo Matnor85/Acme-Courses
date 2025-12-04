@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Acme_Courses.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20251204102010_new setting")]
-    partial class newsetting
+    [Migration("20251204105135_New databse")]
+    partial class Newdatabse
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,9 +43,6 @@ namespace Acme_Courses.Migrations
                     b.Property<int>("KontaktUppgiftID")
                         .HasColumnType("int");
 
-                    b.Property<int>("UtbildningsID")
-                        .HasColumnType("int");
-
                     b.HasKey("ID");
 
                     b.HasIndex("KontaktUppgiftID");
@@ -58,48 +55,42 @@ namespace Acme_Courses.Migrations
                             ID = 1,
                             Efternamn = "Andersson",
                             Förnamn = "Anna",
-                            KontaktUppgiftID = 1,
-                            UtbildningsID = 1
+                            KontaktUppgiftID = 1
                         },
                         new
                         {
                             ID = 2,
                             Efternamn = "Berg",
                             Förnamn = "Björn",
-                            KontaktUppgiftID = 2,
-                            UtbildningsID = 1
+                            KontaktUppgiftID = 2
                         },
                         new
                         {
                             ID = 3,
                             Efternamn = "Eriksson",
                             Förnamn = "Erik",
-                            KontaktUppgiftID = 3,
-                            UtbildningsID = 2
+                            KontaktUppgiftID = 3
                         },
                         new
                         {
                             ID = 4,
                             Efternamn = "Svensson",
                             Förnamn = "Sara",
-                            KontaktUppgiftID = 4,
-                            UtbildningsID = 2
+                            KontaktUppgiftID = 4
                         },
                         new
                         {
                             ID = 5,
                             Efternamn = "Lind",
                             Förnamn = "Lina",
-                            KontaktUppgiftID = 5,
-                            UtbildningsID = 3
+                            KontaktUppgiftID = 5
                         },
                         new
                         {
                             ID = 6,
                             Efternamn = "Olsson",
                             Förnamn = "Oskar",
-                            KontaktUppgiftID = 6,
-                            UtbildningsID = 3
+                            KontaktUppgiftID = 6
                         });
                 });
 
@@ -124,7 +115,7 @@ namespace Acme_Courses.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Kontaktuppgift");
+                    b.ToTable("Kontaktuppgifter");
 
                     b.HasData(
                         new
