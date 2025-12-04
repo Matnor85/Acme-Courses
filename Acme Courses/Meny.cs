@@ -15,13 +15,12 @@ internal class Meny
         {
 
             string[] menu =
-            ["Time Reporting System",
+            ["Acme school",
             "",
-            "1. Lägg till anställd",
-            "2. Logga timmar",
-            "3. visa rapporter",
-            "4. Ta bort anställd",
-            "5. Exit",
+            "1. Show all studens",
+            "2. Show all courses",
+            "3. Show all educations",
+            "4. Exit",
             "",
             "Please select an option: "];
             Console.Clear();
@@ -33,22 +32,18 @@ internal class Meny
             {
                 case ConsoleKey.D1:
                 case ConsoleKey.NumPad1:
-                    AddEmployee();
+                    ShowAllStudents();
                     break;
                 case ConsoleKey.D2:
                 case ConsoleKey.NumPad2:
-                    LogHours();
+                    ShowAllCourses();
                     break;
                 case ConsoleKey.D3:
                 case ConsoleKey.NumPad3:
-                    ShowReportsMenu();
+                    ShowAllEducations();
                     break;
                 case ConsoleKey.D4:
                 case ConsoleKey.NumPad4:
-                    RemoveEmployee();
-                    break;
-                case ConsoleKey.D5:
-                case ConsoleKey.NumPad5:
                     Environment.Exit(0);
                     break;
                 default:
@@ -59,36 +54,129 @@ internal class Meny
         }
     }
 
-    private static void RemoveEmployee()
+    private static void ShowAllEducations()
     {
         Console.Clear();
-        ConsoleHelper.CenterAll("Här kan du ta bort en anställd");
+        string[] menu =
+           ["Acme school",
+            "",
+            "1. Show all studens",
+            "2. Add student",
+            "3. Remove student",
+            "4. Back",
+            "",
+            "Please select an option: "];
+        Console.Clear();
+        ConsoleHelper.CenterMenu(menu);
+        ConsoleHelper.SetCursor(4, 11);
+        ConsoleKeyInfo key = Console.ReadKey(true);
 
-        Console.ReadLine();
+        switch (key.Key)
+        {
+            case ConsoleKey.D1:
+            case ConsoleKey.NumPad1:
+                ShowAllStudents();
+                break;
+            case ConsoleKey.D2:
+            case ConsoleKey.NumPad2:
+                ShowAllCourses();
+                break;
+            case ConsoleKey.D3:
+            case ConsoleKey.NumPad3:
+                ShowAllEducations();
+                break;
+            case ConsoleKey.D4:
+            case ConsoleKey.NumPad4:
+                return;
+            default:
+                ConsoleHelper.Sound();
+                ShowMainMenu();
+                break;
+        }
+    }
+
+    private static void ShowAllCourses()
+    {
+        Console.Clear();
+        string[] menu =
+           ["Acme school",
+            "",
+            "1. Show all courses",
+            "2. Add course",
+            "3. Remove course",
+            "4. Back",
+            "",
+            "Please select an option: "];
+        Console.Clear();
+        ConsoleHelper.CenterMenu(menu);
+        ConsoleHelper.SetCursor(4, 11);
+        ConsoleKeyInfo key = Console.ReadKey(true);
+
+        switch (key.Key)
+        {
+            case ConsoleKey.D1:
+            case ConsoleKey.NumPad1:
+                ShowAllStudents();
+                break;
+            case ConsoleKey.D2:
+            case ConsoleKey.NumPad2:
+                ShowAllCourses();
+                break;
+            case ConsoleKey.D3:
+            case ConsoleKey.NumPad3:
+                ShowAllEducations();
+                break;
+            case ConsoleKey.D4:
+            case ConsoleKey.NumPad4:
+                return;
+            default:
+                ConsoleHelper.Sound();
+                ShowMainMenu();
+                break;
+        }
 
     }
 
-    private static void ShowReportsMenu()
+    private static void ShowAllStudents()
     {
         Console.Clear();
-        ConsoleHelper.CenterAll("Här kan du se alla rapporter");
-        Console.ReadLine();
-
-    }
-
-    private static void LogHours()
-    {
+        string[] menu =
+           ["Acme school",
+            "",
+            "1. Show all studens",
+            "2. Show all courses",
+            "3. Show all educations",
+            "4. Exit",
+            "",
+            "Please select an option: "];
         Console.Clear();
-        ConsoleHelper.CenterAll("Här kan du lägga till tid");
-        Console.ReadLine();
+        ConsoleHelper.CenterMenu(menu);
+        ConsoleHelper.SetCursor(4, 11);
+        ConsoleKeyInfo key = Console.ReadKey(true);
 
-    }
-
-    private static void AddEmployee()
-    {
-        Console.Clear();
-        ConsoleHelper.CenterAll("Här kan du lägga till anställd");
-        Console.ReadLine();
+        switch (key.Key)
+        {
+            case ConsoleKey.D1:
+            case ConsoleKey.NumPad1:
+                ShowAllStudents();
+                break;
+            case ConsoleKey.D2:
+            case ConsoleKey.NumPad2:
+                ShowAllCourses();
+                break;
+            case ConsoleKey.D3:
+            case ConsoleKey.NumPad3:
+                ShowAllEducations();
+                break;
+            case ConsoleKey.D4:
+            case ConsoleKey.NumPad4:
+                Environment.Exit(0);
+                break;
+            default:
+                ConsoleHelper.Sound();
+                ShowMainMenu();
+                break;
+        }
 
     }
 }
