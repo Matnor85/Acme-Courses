@@ -1,0 +1,14 @@
+Visa alla elever:
+-Förnamn, efternamn
+-Vilka utbildningar varje elev går?
+-Start och slutdatum för respektive utbildningar?
+-Kontaktuppgifter för varje elev?
+
+Visa kontaktuppgifter:
+-Vissa alla e-post addresser
+-Visa alla telefonnummer
+
+Visa alla utbildningar:
+-Namnet på alla utbildningar
+-Start och slutdatum
+-Vilka kurser som finns i varje utbildning
