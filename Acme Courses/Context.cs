@@ -42,14 +42,31 @@ public class ApplicationContext : DbContext
         new Utbildning { ID = 3, Namn = "FSUV25", Beskrivning = "Fullstack-Utvecklare" }
         );
 
-        // Kontaktuppgifter (seed) — så KontaktUppgiftID i elever refererar till existerande rader
+        // Kontaktuppgifter (seed) — varje Elev får både E-post och Telefon
         modelBuilder.Entity<KontaktUppgift>().HasData(
+            // Elev 1 - Anna Andersson
             new KontaktUppgift { ID = 1, KontaktTyp = "E-post", KontaktInfo = "anna.andersson@example.com", ElevID = 1 },
-            new KontaktUppgift { ID = 2, KontaktTyp = "Telefon", KontaktInfo = "070-1111111", ElevID = 2 },
-            new KontaktUppgift { ID = 3, KontaktTyp = "E-post", KontaktInfo = "erik.eriksson@example.com", ElevID = 3 },
-            new KontaktUppgift { ID = 4, KontaktTyp = "Telefon", KontaktInfo = "070-2222222", ElevID = 4},
-            new KontaktUppgift { ID = 5, KontaktTyp = "E-post", KontaktInfo = "lina.lind@example.com", ElevID = 5 },
-            new KontaktUppgift { ID = 6, KontaktTyp = "Telefon", KontaktInfo = "070-3333333", ElevID = 6 }
+            new KontaktUppgift { ID = 2, KontaktTyp = "Telefon", KontaktInfo = "070-1111111", ElevID = 1 },
+
+            // Elev 2 - Björn Berg
+            new KontaktUppgift { ID = 3, KontaktTyp = "E-post", KontaktInfo = "bjorn.berg@example.com", ElevID = 2 },
+            new KontaktUppgift { ID = 4, KontaktTyp = "Telefon", KontaktInfo = "070-2222222", ElevID = 2 },
+
+            // Elev 3 - Erik Eriksson
+            new KontaktUppgift { ID = 5, KontaktTyp = "E-post", KontaktInfo = "erik.eriksson@example.com", ElevID = 3 },
+            new KontaktUppgift { ID = 6, KontaktTyp = "Telefon", KontaktInfo = "070-3333333", ElevID = 3 },
+
+            // Elev 4 - Sara Svensson
+            new KontaktUppgift { ID = 7, KontaktTyp = "E-post", KontaktInfo = "sara.svensson@example.com", ElevID = 4 },
+            new KontaktUppgift { ID = 8, KontaktTyp = "Telefon", KontaktInfo = "070-4444444", ElevID = 4 },
+
+            // Elev 5 - Lina Lind
+            new KontaktUppgift { ID = 9, KontaktTyp = "E-post", KontaktInfo = "lina.lind@example.com", ElevID = 5 },
+            new KontaktUppgift { ID = 10, KontaktTyp = "Telefon", KontaktInfo = "070-5555555", ElevID = 5 },
+
+            // Elev 6 - Oskar Olsson
+            new KontaktUppgift { ID = 11, KontaktTyp = "E-post", KontaktInfo = "oskar.olsson@example.com", ElevID = 6 },
+            new KontaktUppgift { ID = 12, KontaktTyp = "Telefon", KontaktInfo = "070-6666666", ElevID = 6 }
         );
 
         // Elever (seed)
