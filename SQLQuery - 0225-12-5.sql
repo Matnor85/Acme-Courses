@@ -1,0 +1,1 @@
+﻿select * from Elever as e JOIN Kontaktuppgifter as k on e.ID = k.ElevID
