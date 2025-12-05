@@ -289,16 +289,12 @@ internal class Meny
         List<string> elevLísta = new List<string>();
         foreach (var elev in elever)
         {
-            var q = $"{elev.Förnamn} {elev.Efternamn}";
-            elevLísta.Add(q);
+            elevLísta.Add($"{elev.Förnamn} {elev.Efternamn}");
 
             foreach (var kontakt in elev.KontaktUppgifter)
             {
-                var b = $" {kontakt.KontaktTyp}: {kontakt.KontaktInfo}";
-                elevLísta.Add(b);
+                elevLísta.Add($" {kontakt.KontaktTyp}: {kontakt.KontaktInfo}");
             }
-
-            // Lägg till en tom rad för mellanrum
             elevLísta.Add("");
         }
         ConsoleHelper.CenterBlock(elevLísta);
