@@ -10,9 +10,11 @@ public class Kurs
 {
     public int ID { get; set; }
     public int UtbildningID { get; set; }
+    public int KursledareID { get; set; }
     public string? Namn { get; set; }
     public string? Beskrivning { get; set; }
     public DateTime StartDatum { get; set; }
     public DateTime SlutDatum { get; set; }
     public Utbildning? Utbildning { get; set; }
+    public Kursledare? Kursledare { get; set; }
 }

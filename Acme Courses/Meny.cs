@@ -161,16 +161,18 @@ internal class Meny
             case '1':
                 Console.Clear();
 
-                var kurser = context.Kurser.ToList();
+                var kurser = context.Kurser.Include(kl=>kl.Kursledare).ToList();
                 List<string> kursLista = new List<string>();
                 foreach (var kurs in kurser)
                 {
                     var q = $"{kurs.Namn}";
                     var t = $"course info: {kurs.Beskrivning}";
                     var r = $"Start: {kurs.StartDatum} Ends: {kurs.SlutDatum}";
+                    var y = $"Kursledare: {kurs.Kursledare.Förnamn} {kurs.Kursledare.Efternamn}";
                     kursLista.Add(q);
                     kursLista.Add(t);
                     kursLista.Add(r);
+                    kursLista.Add(y);
                     kursLista.Add("");
                 }
 

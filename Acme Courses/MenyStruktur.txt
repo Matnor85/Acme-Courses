@@ -16,4 +16,6 @@ Visa alla utbildningar:
 
 Kurser:
 -Lägga till vilka kurser som hör ihop med respektive utbildning?
+-Visa respektive kursledares namn för varje kurs?
+
 

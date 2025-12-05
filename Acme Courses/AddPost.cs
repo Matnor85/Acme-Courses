@@ -18,6 +18,7 @@ public class AddPost()
             {
                 Förnamn = "Bill",
                 Efternamn = "Gates"
+                //Kontaktuppgifter och Utbildning?
             };
             context.Elever.Add(std);
         
