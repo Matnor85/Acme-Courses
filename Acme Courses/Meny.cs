@@ -52,7 +52,7 @@ internal class Meny
                     break;
                 default:
                     ConsoleHelper.Sound();
-                    ShowMainMenu();
+                    ConsoleHelper.CenterAll("invalid choice");
                     break;
             }
         }
@@ -67,8 +67,7 @@ internal class Meny
             "1. Show all educations",
             "2. Add education",
             "3. Remove education",
-            "4. Search education",
-            "5. Back",
+            "4. Back",
             "",
             "Please select an option: "];
         Console.Clear();
@@ -124,19 +123,16 @@ internal class Meny
                 break;
             case ConsoleKey.D4:
             case ConsoleKey.NumPad4:
-                
-                break;
-                
-            case ConsoleKey.D5:
-            case ConsoleKey.NumPad5:
 
-                    default:
+                return;
+
+            default:
                 ConsoleHelper.Sound();
-                    ShowMainMenu();
-                    break;
-                }
+                ConsoleHelper.CenterAll("invalid choice");
+                break;
         }
-    
+    }
+
 
     private static void ShowAllCourses()
     {
@@ -159,7 +155,29 @@ internal class Meny
         {
             case ConsoleKey.D1:
             case ConsoleKey.NumPad1:
-                ShowAllStudents();
+                Console.Clear();
+                var kurser = context.Kurser.ToList();
+                List<string> kursLísta = new List<string>();
+                foreach (var kurs in kurser)
+                {
+                    var q = $"{kurs.Namn} course info: {kurs.Beskrivning} Start: {kurs.StartDatum} Ends: {kurs.SlutDatum}";
+                    kursLísta.Add(q);
+                    foreach (var kursinfo in kurser )
+                    {
+                        var b = $" {kursinfo.Beskrivning}";
+                        kursLísta.Add(b);
+                        foreach (var time in kurser)
+                        {
+                            var c = $" {kursinfo.StartDatum} - {kursinfo.SlutDatum}";
+                            kursLísta.Add(c);
+                        }
+                    }
+
+                    // Lägg till en tom rad för mellanrum
+                    kursLísta.Add("");
+                }
+                ConsoleHelper.CenterBlock(kursLísta);
+                Console.ReadLine();
                 break;
             case ConsoleKey.D2:
             case ConsoleKey.NumPad2:
@@ -174,7 +192,7 @@ internal class Meny
                 return;
             default:
                 ConsoleHelper.Sound();
-                ShowMainMenu();
+                ConsoleHelper.CenterAll("invalid choice");
                 break;
         }
 
@@ -211,7 +229,7 @@ internal class Meny
 
                 if (fullNames.IsNullOrEmpty())
                 {
-                    ConsoleHelper.CenterAll("Inga studenter hittades.");
+                    ConsoleHelper.CenterAll("No students found.");
                 }
                 else
                 {
@@ -237,7 +255,7 @@ internal class Meny
                 return;
             default:
                 ConsoleHelper.Sound();
-                ShowMainMenu();
+                ConsoleHelper.CenterAll("invalid choice");
                 break;
         }
     }
@@ -256,9 +274,13 @@ internal class Meny
                 var b = $" {kontakt.KontaktTyp}: {kontakt.KontaktInfo}";
                 elevLísta.Add(b);
             }
+
+            // Lägg till en tom rad för mellanrum
+            elevLísta.Add("");
         }
         ConsoleHelper.CenterBlock(elevLísta);
         Console.ReadLine();
+
     }
 
 
