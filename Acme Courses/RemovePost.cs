@@ -14,8 +14,13 @@ public class RemovePost()
 
     public static void RemoveFrom()
     {
+        UserChoice();
+        var förnamn = UserChoice().förnamn;
+        var efternamn = UserChoice().efternamn;
         var std = context.Elever
-            .FirstOrDefault(e => e.Förnamn == "Bill");
+            .Select(e => new { e.Förnamn, e.Efternamn })
+            .Where(e => e.Förnamn == förnamn && e.Efternamn == efternamn);
+
 
         if (std == null)
         {
@@ -23,9 +28,46 @@ public class RemovePost()
             return;
         }
 
-            context.Elever.Remove(std);
+        //context.Elever.Remove(std);
 
         AreYouSure();
+    }
+
+    private static (string förnamn, string efternamn) UserChoice()
+    {
+        Console.Clear();
+
+        var q = context.Elever
+            .Select(q => new { q.ID, q.Förnamn, q.Efternamn })
+            .OrderBy(q => q.ID);
+        List<string> elevList = new List<string>();
+        List<int> ID = new List<int>();
+        foreach (var item in q)
+        {
+
+            elevList.Add(string.Join($"{item.Förnamn}", $"{item.Efternamn}"));
+            ID.Add(item.ID);
+        }
+        ConsoleHelper.CenterAll($"{ID} {elevList}");
+        //ConsoleHelper.CenterMenu();
+
+        ConsoleHelper.CenterAll("Enter the number of the row ýou wish to edit.");
+        ConsoleKeyInfo key = Console.ReadKey(true);
+
+        if (int.Parse(key.ToString()!) <= ID.Count)
+        {
+            var x = context.Elever
+                .Select(x => new { x.ID, x.Förnamn, x.Efternamn })
+                .Where(x => x.ID == int.Parse(key.ToString()!));
+        }
+        else
+        {
+            Console.Clear();
+            ConsoleHelper.CenterAll("You gave an invalid ID");
+        }
+
+
+        throw new NotImplementedException();
     }
 
     private static void AreYouSure()

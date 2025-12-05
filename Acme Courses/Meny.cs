@@ -178,12 +178,12 @@ internal class Meny
             case '2':
                 for (int i = 0; i < 50; i++)
                 {
-                AddPost.AddTo();
+                ShowAllCourses();
                 }
 
                 break;
             case '3':
-                RemovePost.RemoveFrom();
+                ShowAllCourses();
                 break;
             case '4':
                 return;
@@ -238,10 +238,10 @@ internal class Meny
                 ContactInformations();
                 break;
             case '3':
-
+                AddPost.AddTo();
                 break;
             case '4':
-
+                RemovePost.RemoveFrom();
                 break;
             case '5':
                 return;
@@ -256,18 +256,18 @@ internal class Meny
     {
         Console.Clear();
         var elever = context.Elever.Include(s => s.KontaktUppgifter).ToList();
-        List<string> elevLísta = new List<string>();
+        List<string> elevLista = new List<string>();
         foreach (var elev in elever)
         {
-            elevLísta.Add($"{elev.Förnamn} {elev.Efternamn}"); 
+            elevLista.Add($"{elev.Förnamn} {elev.Efternamn}"); 
 
             foreach (var kontakt in elev.KontaktUppgifter)
             {
-                elevLísta.Add($" {kontakt.KontaktTyp}: {kontakt.KontaktInfo}");
+                elevLista.Add($" {kontakt.KontaktTyp}: {kontakt.KontaktInfo}");
             }
-            elevLísta.Add("");
+            elevLista.Add("");
         }
-        ConsoleHelper.CenterBlock(elevLísta);
+        ConsoleHelper.CenterBlock(elevLista);
         Console.ReadKey(true);
     }
 }
