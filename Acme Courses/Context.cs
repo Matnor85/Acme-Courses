@@ -78,7 +78,7 @@ public class ApplicationContext : DbContext
             new Elev { ID = 5, Förnamn = "Lina", Efternamn = "Lind" },
             new Elev { ID = 6, Förnamn = "Oskar", Efternamn = "Olsson", }
         );
-        modelBuilder.Entity<Dictionary<string, object>>("ElevUtbildning").HasData(
+        modelBuilder.Entity("ElevUtbildning").HasData(
             new { EleverID = 1, UtbildningarID = 1 },
             new { EleverID = 2, UtbildningarID = 1 },
             new { EleverID = 3, UtbildningarID = 2 },
