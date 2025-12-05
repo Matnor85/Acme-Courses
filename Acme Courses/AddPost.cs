@@ -26,11 +26,16 @@ public class AddPost (string tabellNamn)
 
     private static void AreYouSure()
     {
-        var choice = Console.ReadLine();
+        Console.WriteLine("Are you sure?: [Y] = YES or [N] for no");
+        var choice = Console.ReadLine()?.ToUpper();
 
-        if (true)
+        if (choice == "Y")
         {
         context.SaveChanges();
+        }
+        else
+        {
+
         }
     }
 }
