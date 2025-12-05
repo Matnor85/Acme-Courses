@@ -162,23 +162,23 @@ internal class Meny
                 Console.Clear();
 
                 var kurser = context.Kurser.ToList();
-                List<string> kursLísta = new List<string>();
+                List<string> kursLista = new List<string>();
                 foreach (var kurs in kurser)
                 {
                     var q = $"{kurs.Namn}";
                     var t = $"course info: {kurs.Beskrivning}";
                     var r = $"Start: {kurs.StartDatum} Ends: {kurs.SlutDatum}";
-                    kursLísta.Add(q);
-                    kursLísta.Add(t);
-                    kursLísta.Add(r);
-                    kursLísta.Add("");
+                    kursLista.Add(q);
+                    kursLista.Add(t);
+                    kursLista.Add(r);
+                    kursLista.Add("");
                 }
 
-                ConsoleHelper.CenterBlock(kursLísta);
+                ConsoleHelper.CenterBlock(kursLista);
                 Console.ReadKey(true);
                 break;
             case '2':
-                ShowAllCourses();
+                //AddPost.AddTo();
                 break;
             case '3':
                 ShowAllCourses();
