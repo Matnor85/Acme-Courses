@@ -45,16 +45,21 @@ public class RemovePost()
         foreach (var item in q)
         {
 
-            elevList.Add(string.Join($"{item.Förnamn}", $"{item.Efternamn}"));
+            elevList.Add(string.Join($"{item.Förnamn}", $"{item.ID} ", $" {item.Efternamn}"));
+            
             ID.Add(item.ID);
         }
-        ConsoleHelper.CenterAll($"{ID} {elevList}");
+        foreach (var item in elevList)
+        {
+        Console.WriteLine(item);
+        }
+        ConsoleHelper.CenterBlock(elevList);
         //ConsoleHelper.CenterMenu();
 
-        ConsoleHelper.CenterAll("Enter the number of the row ýou wish to edit.");
+        ConsoleHelper.CenterAll("Enter the number of the row you wish to edit.");
         ConsoleKeyInfo key = Console.ReadKey(true);
 
-        if (int.Parse(key.ToString()!) <= ID.Count)
+        if (int.Parse(key.ToString()!) <= ID.Count && int.Parse(key.ToString()!) >= 0)
         {
             var x = context.Elever
                 .Select(x => new { x.ID, x.Förnamn, x.Efternamn })
