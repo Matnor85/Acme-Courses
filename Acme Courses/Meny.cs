@@ -31,7 +31,7 @@ internal class Meny
             ConsoleHelper.SetCursor(4, 11);
             ConsoleKeyInfo key = Console.ReadKey(true);
 
-            switch (key.KeyChar)
+            switch (key.KeyChar) // Main Menu
             {
                 case '1':
                     ShowAllStudents();
@@ -73,7 +73,7 @@ internal class Meny
         while (true)
         {
 
-            switch (key.KeyChar)
+            switch (key.KeyChar) // Education Menu
             {
                 case '1':
                     Console.Clear();
@@ -95,7 +95,7 @@ internal class Meny
                     if (utbildning is null)
                     {
                         Console.Clear();
-                        ConsoleHelper.CenterAll("Invalide choice!");
+                        ConsoleHelper.CenterAll("Invalid choice!");
                         Console.ReadKey(true);
                         break;
                     }
@@ -120,10 +120,10 @@ internal class Meny
                     ShowAllEducations();
                     break;
                 case '2':
-
+                    ShowAllEducations();
                     break;
                 case '3':
-
+                    ShowAllEducations();
                     break;
                 case '4':
                     ShowMainMenu();
@@ -181,7 +181,7 @@ internal class Meny
                 ShowAllCourses();
                 break;
             case '3':
-                ShowAllEducations();
+                ShowAllCourses();
                 break;
             case '4':
                 return;
