@@ -88,12 +88,12 @@ public class ApplicationContext : DbContext
         );
         // Kurser (seed)
         modelBuilder.Entity<Kurs>().HasData(
-            new Kurs { ID = 1, UtbildningID = 1, KursledareID=1, Namn = "C# Grund", Beskrivning = "Introduktion till C# och .NET", StartDatum = new DateTime(2025, 9, 1), SlutDatum = new DateTime(2025, 12, 15) },
-            new Kurs { ID = 2, UtbildningID = 1, KursledareID=1,Namn = "SQL Grund", Beskrivning = "SQL Server och EF Core", StartDatum = new DateTime(2025, 9, 1), SlutDatum = new DateTime(2025, 11, 30) },
-            new Kurs { ID = 3, UtbildningID = 2, KursledareID=1,Namn = "Frontend 1", Beskrivning = "HTML, CSS och JavaScript", StartDatum = new DateTime(2025, 9, 1), SlutDatum = new DateTime(2025, 12, 1) },
-            new Kurs { ID = 4, UtbildningID = 2, KursledareID=2,Namn = "React Grund", Beskrivning = "Komponenter och state", StartDatum = new DateTime(2025, 10, 1), SlutDatum = new DateTime(2025, 12, 20) },
-            new Kurs { ID = 5, UtbildningID = 3, KursledareID=2,Namn = "Fullstack Projekt", Beskrivning = "Bygg en komplett webbapplikation", StartDatum = new DateTime(2025, 9, 15), SlutDatum = new DateTime(2026, 1, 15) },
-            new Kurs { ID = 6, UtbildningID = 3, KursledareID=3,Namn= "DevOps Introduktion", Beskrivning = "CI/CD och deployment", StartDatum = new DateTime(2025, 11, 1), SlutDatum = new DateTime(2026, 2, 1) }
+            new Kurs { ID = 1, UtbildningID = 1, KursledareID=1, Namn = "C# Grund", Beskrivning = "Introduktion till C# och .NET", StartDatum = new DateOnly(2025, 9, 1), SlutDatum = new DateOnly(2025, 12, 15) },
+            new Kurs { ID = 2, UtbildningID = 1, KursledareID=1,Namn = "SQL Grund", Beskrivning = "SQL Server och EF Core", StartDatum = new DateOnly(2025, 9, 1), SlutDatum = new DateOnly(2025, 11, 30) },
+            new Kurs { ID = 3, UtbildningID = 2, KursledareID=1,Namn = "Frontend 1", Beskrivning = "HTML, CSS och JavaScript", StartDatum = new DateOnly(2025, 9, 1), SlutDatum = new DateOnly(2025, 12, 1) },
+            new Kurs { ID = 4, UtbildningID = 2, KursledareID=2,Namn = "React Grund", Beskrivning = "Komponenter och state", StartDatum = new DateOnly(2025, 10, 1), SlutDatum = new DateOnly(2025, 12, 20) },
+            new Kurs { ID = 5, UtbildningID = 3, KursledareID=2,Namn = "Fullstack Projekt", Beskrivning = "Bygg en komplett webbapplikation", StartDatum = new DateOnly(2025, 9, 15), SlutDatum = new DateOnly(2026, 1, 15) },
+            new Kurs { ID = 6, UtbildningID = 3, KursledareID=3,Namn= "DevOps Introduktion", Beskrivning = "CI/CD och deployment", StartDatum = new DateOnly(2025, 11, 1), SlutDatum = new DateOnly(2026, 2, 1) }
         );
         modelBuilder.Entity<Kursledare>().HasData(
             new Kursledare { ID = 1, Förnamn = "Karin", Efternamn = "Karlsson" },

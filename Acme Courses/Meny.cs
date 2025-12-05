@@ -165,14 +165,10 @@ internal class Meny
                 List<string> kursLista = new List<string>();
                 foreach (var kurs in kurser)
                 {
-                    var q = $"{kurs.Namn}";
-                    var t = $"course info: {kurs.Beskrivning}";
-                    var r = $"Start: {kurs.StartDatum} Ends: {kurs.SlutDatum}";
-                    var y = $"Kursledare: {kurs.Kursledare?.Förnamn} {kurs.Kursledare?.Efternamn}";
-                    kursLista.Add(q);
-                    kursLista.Add(t);
-                    kursLista.Add(r);
-                    kursLista.Add(y);
+                    kursLista.Add($"{kurs.Namn}");
+                    kursLista.Add($"course info: {kurs.Beskrivning}");
+                    kursLista.Add($"Start: {kurs.StartDatum} Ends: {kurs.SlutDatum}");
+                    kursLista.Add($"Kursledare: {kurs.Kursledare?.Förnamn} {kurs.Kursledare?.Efternamn}");
                     kursLista.Add("");
                 }
 
