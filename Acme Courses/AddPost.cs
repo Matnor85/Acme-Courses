@@ -33,7 +33,7 @@ public class AddPost()
         
         ConsoleKeyInfo key = Console.ReadKey(true);
 
-        switch (key.KeyChar)
+        switch (char.ToLower(key.KeyChar))
         {
             case 'y':
                 context.SaveChanges();

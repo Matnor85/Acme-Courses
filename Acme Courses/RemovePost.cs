@@ -15,10 +15,15 @@ public class RemovePost()
     public static void RemoveFrom()
     {
         var std = context.Elever
-            .Where(std => std.Förnamn == "Bill")
-            .Select(std => new { });
-        
-        context.Elever.Remove(std.Provider);
+            .FirstOrDefault(e => e.Förnamn == "Bill");
+
+        if (std == null)
+        {
+            ConsoleHelper.CenterAll("Student not found!");
+            return;
+        }
+
+            context.Elever.Remove(std);
 
         AreYouSure();
     }
@@ -32,12 +37,12 @@ public class RemovePost()
 
         ConsoleKeyInfo key = Console.ReadKey(true);
 
-        switch (key.KeyChar)
+        switch (char.ToLower(key.KeyChar))
         {
-            case 'Y':
+            case 'y':
                 context.SaveChanges();
                 break;
-            case 'N':
+            case 'n':
                 break;
             default:
                 ConsoleHelper.CenterAll("Invalid input!");
