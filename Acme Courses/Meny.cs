@@ -31,22 +31,18 @@ internal class Meny
             ConsoleHelper.SetCursor(4, 11);
             ConsoleKeyInfo key = Console.ReadKey(true);
 
-            switch (key.Key)
+            switch (key.KeyChar)
             {
-                case ConsoleKey.D1:
-                case ConsoleKey.NumPad1:
+                case '1':
                     ShowAllStudents();
                     break;
-                case ConsoleKey.D2:
-                case ConsoleKey.NumPad2:
+                case '2':
                     ShowAllCourses();
                     break;
-                case ConsoleKey.D3:
-                case ConsoleKey.NumPad3:
+                case '3':
                     ShowAllEducations();
                     break;
-                case ConsoleKey.D4:
-                case ConsoleKey.NumPad4:
+                case '4':
                     Environment.Exit(0);
                     break;
                 default:
@@ -80,7 +76,6 @@ internal class Meny
             switch (key.KeyChar)
             {
                 case '1':
-                //case ConsoleKey.NumPad1:
                     Console.Clear();
                     var utbildningar = context.Utbildningar
                     .Select(u => $"{u.ID}. {u.Namn}")
@@ -91,7 +86,6 @@ internal class Meny
                     ConsoleHelper.SetCursor(13, 0);
                     ConsoleKeyInfo keyy = Console.ReadKey(true);
                     var input = int.TryParse(keyy.KeyChar.ToString(), out int keyInfo);
-                    //if (keyinfo!) { /*break;*/ }
 
                     var utbildning = context.Utbildningar.Find(keyInfo);
                     var qa = context.Utbildningar
@@ -126,15 +120,12 @@ internal class Meny
                     ShowAllEducations();
                     break;
                 case '2':
-                //case ConsoleKey.NumPad2:
 
                     break;
                 case '3':
-                //case ConsoleKey.NumPad3:
 
                     break;
-                //case ConsoleKey.D4:
-                //case ConsoleKey.NumPad4:
+                case '4':
                     ShowMainMenu();
                     break; 
 
@@ -165,10 +156,9 @@ internal class Meny
         ConsoleHelper.SetCursor(4, 11);
         ConsoleKeyInfo key = Console.ReadKey(true);
 
-        switch (key.Key)
+        switch (key.KeyChar)
         {
-            case ConsoleKey.D1:
-            case ConsoleKey.NumPad1:
+            case '1':
                 Console.Clear();
 
                 var kurser = context.Kurser.ToList();
@@ -187,16 +177,13 @@ internal class Meny
                 ConsoleHelper.CenterBlock(kursLísta);
                 Console.ReadKey(true);
                 break;
-            case ConsoleKey.D2:
-            case ConsoleKey.NumPad2:
+            case '2':
                 ShowAllCourses();
                 break;
-            case ConsoleKey.D3:
-            case ConsoleKey.NumPad3:
+            case '3':
                 ShowAllEducations();
                 break;
-            case ConsoleKey.D4:
-            case ConsoleKey.NumPad4:
+            case '4':
                 return;
             default:
                 ConsoleHelper.Sound();
@@ -225,12 +212,10 @@ internal class Meny
         ConsoleHelper.SetCursor(4, 11);
         ConsoleKeyInfo key = Console.ReadKey(true);
 
-        switch (key.Key)
+        switch (key.KeyChar)
         {
-            case ConsoleKey.D1:
-            case ConsoleKey.NumPad1:
+            case '1':
                 Console.Clear();
-
 
                 var fullNames = context.Elever
                     .Select(e => $"{e.Förnamn} {e.Efternamn}")
@@ -247,20 +232,16 @@ internal class Meny
 
                 Console.ReadKey(true);
                 break;
-            case ConsoleKey.D2:
-            case ConsoleKey.NumPad2:
+            case '2':
                 ContactInformations();
                 break;
-            case ConsoleKey.D3:
-            case ConsoleKey.NumPad3:
+            case '3':
 
                 break;
-            case ConsoleKey.D4:
-            case ConsoleKey.NumPad4:
+            case '4':
 
                 break;
-            case ConsoleKey.D5:
-            case ConsoleKey.NumPad5:
+            case '5':
                 return;
             default:
                 ConsoleHelper.Sound();
