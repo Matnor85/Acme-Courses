@@ -4,14 +4,14 @@ using System.Text;
 
 namespace Acme_Courses;
 
-public class AddPost (string tabellNamn)
+public class AddPost ()
 {
     //string tabell = tabellNamn;
 
     static ApplicationContext context = new ApplicationContext();
 
 
-    public static void AddTo(string tabellNamn)
+    public static void AddTo()
     {
             var std = new Elev()
             {
@@ -32,10 +32,6 @@ public class AddPost (string tabellNamn)
         if (choice == "Y")
         {
         context.SaveChanges();
-        }
-        else
-        {
-
         }
     }
 }
