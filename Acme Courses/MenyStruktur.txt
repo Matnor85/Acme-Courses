@@ -1,5 +1,5 @@
 Visa alla elever:
--Förnamn, efternamn
+-Förnamn, efternamn (Känns onödigt att både "Visa alla studenter" och "Visa kontaktinformation", visa alla elever är ju bara kontaktinfo minus e-post och telefonnummer)
 -Vilka utbildningar varje elev går?
 -Start och slutdatum för respektive utbildningar?
 -Kontaktuppgifter för varje elev?
