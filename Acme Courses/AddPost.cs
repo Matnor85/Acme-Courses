@@ -4,6 +4,21 @@ using System.Text;
 
 namespace Acme_Courses;
 
-internal class AddPost
+public class AddPost (string tabellNamn)
 {
+    string tabell = tabellNamn;
+
+    static ApplicationContext context = new ApplicationContext();
+
+
+    public static void AddTo()
+    {
+
+
+
+
+    }
+
+
+
 }
