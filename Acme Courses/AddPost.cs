@@ -4,6 +4,20 @@ using System.Text;
 
 namespace Acme_Courses;
 
-internal class AddPost
+public class AddPost
 {
+
+    static ApplicationContext context = new ApplicationContext();
+
+
+    public static void AddTo()
+    {
+
+
+
+        
+    }
+
+
+    
 }
