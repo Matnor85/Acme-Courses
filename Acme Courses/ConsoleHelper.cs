@@ -100,7 +100,7 @@ internal class ConsoleHelper
             Console.WriteLine(centeredLine);
         }
         // Flytta markören till början av nästa rad
-        Console.SetCursorPosition(0, startY + lines.Count + 1);
+        //Console.SetCursorPosition(0, startY + lines.Count + 1);
     }
     // Spelar upp ett kort ljud om man kör på Windows.
     // Gör inget på andra operativsystem eftersom Console.Beep() inte stöds där.

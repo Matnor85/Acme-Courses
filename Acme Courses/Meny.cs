@@ -180,7 +180,11 @@ internal class Meny
                 Console.ReadKey(true);
                 break;
             case '2':
+                for (int i = 0; i < 50; i++)
+                {
                 AddPost.AddTo();
+                }
+
                 break;
             case '3':
                 RemovePost.RemoveFrom();
