@@ -156,25 +156,38 @@ internal class Meny
             case ConsoleKey.D1:
             case ConsoleKey.NumPad1:
                 Console.Clear();
+               // var kurser = context.Kurser;
+               // var utbild = new[]
+               //{
+               //     $"{} - {utbildning.Namn}",
+               //     "",
+               //     "Information:",
+               //     utbildning.Beskrivning ?? "(No inforamtion for this education)",
+               //     "",
+               //     "Press Enter to return."
+               // };
+                //ConsoleHelper.CenterAll(string.Join("\n", utbild));
                 var kurser = context.Kurser.ToList();
                 List<string> kursLísta = new List<string>();
                 foreach (var kurs in kurser)
                 {
-                    var q = $"{kurs.Namn} course info: {kurs.Beskrivning} Start: {kurs.StartDatum} Ends: {kurs.SlutDatum}";
+                    var q = $"{kurs.Namn}";
+                    var t = $"course info: {kurs.Beskrivning}";
+                    var r = $"Start: {kurs.StartDatum} Ends: {kurs.SlutDatum}";
                     kursLísta.Add(q);
-                    foreach (var kursinfo in kurser )
-                    {
-                        var b = $" {kursinfo.Beskrivning}";
-                        kursLísta.Add(b);
-                        foreach (var time in kurser)
-                        {
-                            var c = $" {kursinfo.StartDatum} - {kursinfo.SlutDatum}";
-                            kursLísta.Add(c);
-                        }
-                    }
+                    kursLísta.Add(t);
+                    kursLísta.Add(r);
+                    kursLísta.Add("");
+                    //foreach (var kursinfo in kurser)
+                    //{
+                    //    var b = $" {kursinfo.Beskrivning}";
+                    //    var c = $" {kursinfo.StartDatum} - {kursinfo.SlutDatum}";
+                    //    kursLísta.Add(b);
+                    //    kursLísta.Add(c);
+
+                    //}
 
                     // Lägg till en tom rad för mellanrum
-                    kursLísta.Add("");
                 }
                 ConsoleHelper.CenterBlock(kursLísta);
                 Console.ReadLine();
