@@ -181,7 +181,7 @@ internal class Meny
                 AddPost.AddTo();
                 break;
             case '3':
-                ShowAllCourses();
+                RemovePost.RemoveFrom();
                 break;
             case '4':
                 return;

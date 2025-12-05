@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace Acme_Courses;
 
-public class AddPost ()
+public class AddPost()
 {
     //string tabell = tabellNamn;
 
@@ -21,17 +22,29 @@ public class AddPost ()
             context.Elever.Add(std);
         
         AreYouSure();
-
     }
 
     private static void AreYouSure()
     {
-        Console.WriteLine("Are you sure?: [Y] = YES or [N] for no");
-        var choice = Console.ReadLine()?.ToUpper();
+        Console.Clear();
+        ConsoleHelper.CenterAll("Are you sure?: [Y] = YES or [N] for no");
+        Console.WriteLine();
+        Console.WriteLine();
+        
+        ConsoleKeyInfo key = Console.ReadKey(true);
 
-        if (choice == "Y")
+        switch (key.KeyChar)
         {
-        context.SaveChanges();
+            case 'y':
+                context.SaveChanges();
+                break;
+            case 'n':
+                break;
+            default:
+                ConsoleHelper.CenterAll("Invalid input!");
+                Thread.Sleep(1000);
+                Console.Clear();
+            return;
         }
     }
 }
