@@ -118,6 +118,7 @@ internal class Meny
                     };
                     ConsoleHelper.CenterAll(string.Join("\n", utbild));
                     Console.ReadLine();
+                    ShowAllEducations();
                     break;
                 case ConsoleKey.D2:
                 case ConsoleKey.NumPad2:
@@ -129,9 +130,9 @@ internal class Meny
                     break;
                 case ConsoleKey.D4:
                 case ConsoleKey.NumPad4:
-
-                    run = false;
-                    return; 
+                run = false;
+                    ShowMainMenu();
+                    break; 
 
                 default:
                     ConsoleHelper.Sound();
