@@ -168,7 +168,7 @@ internal class Meny
                     var q = $"{kurs.Namn}";
                     var t = $"course info: {kurs.Beskrivning}";
                     var r = $"Start: {kurs.StartDatum} Ends: {kurs.SlutDatum}";
-                    var y = $"Kursledare: {kurs.Kursledare.Förnamn} {kurs.Kursledare.Efternamn}";
+                    var y = $"Kursledare: {kurs.Kursledare?.Förnamn} {kurs.Kursledare?.Efternamn}";
                     kursLista.Add(q);
                     kursLista.Add(t);
                     kursLista.Add(r);
