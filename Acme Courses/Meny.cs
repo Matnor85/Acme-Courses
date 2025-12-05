@@ -18,7 +18,7 @@ internal class Meny
         {
 
             string[] menu =
-            ["Acme school",
+            ["=== Acme school ===",
             "",
             "1. Show all studens",
             "2. Show all courses",
@@ -51,7 +51,8 @@ internal class Meny
                     break;
                 default:
                     ConsoleHelper.Sound();
-                    ConsoleHelper.CenterAll("invalid choice");
+                    ConsoleHelper.CenterAll("Invalid choice");
+                    Console.ReadKey(true);
                     break;
             }
         }
@@ -61,7 +62,7 @@ internal class Meny
     {
         Console.Clear();
         string[] menu =
-           ["educations",
+           ["=== Educations ===",
             "",
             "1. Show all educations",
             "2. Add education",
@@ -76,10 +77,10 @@ internal class Meny
         while (true)
         {
 
-            switch (key.Key)
+            switch (key.KeyChar)
             {
-                case ConsoleKey.D1:
-                case ConsoleKey.NumPad1:
+                case '1':
+                //case ConsoleKey.NumPad1:
                     Console.Clear();
                     var utbildningar = context.Utbildningar
                     .Select(u => $"{u.ID}. {u.Namn}")
@@ -88,20 +89,20 @@ internal class Meny
 
                     ConsoleHelper.CenterAll("Select education for information:\n");
                     ConsoleHelper.SetCursor(13, 0);
-                    var input = int.TryParse(Console.ReadLine()!, out int yada);
-                    
-                    if(input!) { /*break;*/ }
+                    ConsoleKeyInfo keyy = Console.ReadKey(true);
+                    var input = int.TryParse(keyy.KeyChar.ToString(), out int keyInfo);
+                    //if (keyinfo!) { /*break;*/ }
 
-                    var utbildning = context.Utbildningar.Find(yada);
+                    var utbildning = context.Utbildningar.Find(keyInfo);
                     var qa = context.Utbildningar
-                        .Where(u => u.ID == yada)
+                        .Where(u => u.ID == keyInfo)
                         .Select(u => new { u.ID, u.Namn, u.Beskrivning })
                         .ToList();
                     if (utbildning is null)
                     {
                         Console.Clear();
                         ConsoleHelper.CenterAll("Invalide choice!");
-                        Console.ReadLine();
+                        Console.ReadKey(true);
                         break;
                     }
 
@@ -110,7 +111,7 @@ internal class Meny
                     List<string> newList = new List<string>();
                     foreach (var ut in utbild)
                     {
-                        if (ut.ID != yada) continue;
+                        if (ut.ID != keyInfo) continue;
                         newList.Add($"{ut.ID} {ut.Namn} {ut.Beskrivning}");
 
                         foreach (var elev in ut.Elever)
@@ -121,25 +122,26 @@ internal class Meny
                     }
                     
                     ConsoleHelper.CenterBlock(newList);
-                    Console.ReadLine();
+                    Console.ReadKey(true);
                     ShowAllEducations();
                     break;
-                case ConsoleKey.D2:
-                case ConsoleKey.NumPad2:
+                case '2':
+                //case ConsoleKey.NumPad2:
 
                     break;
-                case ConsoleKey.D3:
-                case ConsoleKey.NumPad3:
+                case '3':
+                //case ConsoleKey.NumPad3:
 
                     break;
-                case ConsoleKey.D4:
-                case ConsoleKey.NumPad4:
+                //case ConsoleKey.D4:
+                //case ConsoleKey.NumPad4:
                     ShowMainMenu();
                     break; 
 
                 default:
                     ConsoleHelper.Sound();
-                    ConsoleHelper.CenterAll("invalid choice");
+                    ConsoleHelper.CenterAll("Invalid choice");
+                    Console.ReadKey(true);
                     break;
             }
         }
@@ -150,7 +152,7 @@ internal class Meny
     {
         Console.Clear();
         string[] menu =
-           ["courses",
+           ["=== Courses ===",
             "",
             "1. Show all courses",
             "2. Add course",
@@ -183,7 +185,7 @@ internal class Meny
                 }
 
                 ConsoleHelper.CenterBlock(kursLísta);
-                Console.ReadLine();
+                Console.ReadKey(true);
                 break;
             case ConsoleKey.D2:
             case ConsoleKey.NumPad2:
@@ -198,7 +200,8 @@ internal class Meny
                 return;
             default:
                 ConsoleHelper.Sound();
-                ConsoleHelper.CenterAll("invalid choice");
+                ConsoleHelper.CenterAll("Invalid choice");
+                Console.ReadKey(true);
                 break;
         }
 
@@ -208,9 +211,9 @@ internal class Meny
     {
         Console.Clear();
         string[] menu =
-            ["studens",
+            ["=== Students ===",
             "",
-            "1. Show all studens",
+            "1. Show all students",
             "2. Contact informations",
             "3. Add student",
             "4. Remove student",
@@ -242,7 +245,7 @@ internal class Meny
                     ConsoleHelper.CenterBlock(fullNames);
                 }
 
-                Console.ReadLine();
+                Console.ReadKey(true);
                 break;
             case ConsoleKey.D2:
             case ConsoleKey.NumPad2:
@@ -261,7 +264,8 @@ internal class Meny
                 return;
             default:
                 ConsoleHelper.Sound();
-                ConsoleHelper.CenterAll("invalid choice");
+                ConsoleHelper.CenterAll("Invalid choice");
+                Console.ReadKey(true);
                 break;
         }
     }
@@ -281,6 +285,6 @@ internal class Meny
             elevLísta.Add("");
         }
         ConsoleHelper.CenterBlock(elevLísta);
-        Console.ReadLine();
+        Console.ReadKey(true);
     }
 }
