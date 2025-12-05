@@ -6,7 +6,6 @@ using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
 
-
 namespace Acme_Courses;
 
 internal class Meny
@@ -74,8 +73,10 @@ internal class Meny
         ConsoleHelper.CenterMenu(menu);
         ConsoleHelper.SetCursor(4, 11);
         ConsoleKeyInfo key = Console.ReadKey(true);
-        bool run = true;
-        while (run)
+        //vi skippar detta steg genom att anropa methoder
+        //vilket betyder att vi kan lämna true i while loopen
+        //bool run = true;
+        while (true)
         {
 
             switch (key.Key)
@@ -106,16 +107,40 @@ internal class Meny
                         Console.ReadLine();
                         break;
                     }
+
                     Console.Clear();
-                    var utbild = new[]
+                    var utbild = context.Utbildningar.Include(u => u.Elever).ToList();
+                    List<string> newList = new List<string>();
+                    foreach (var ut in utbild)
                     {
-                        $"{utbildning.ID} - {utbildning.Namn}",
-                        "",
-                        "Information:",
-                        utbildning.Beskrivning ?? "(No inforamtion for this education)",
-                        "",
-                        "Press Enter to return."
-                    };
+                        newList.Add($"{ut.ID} {ut.Namn} {ut.Beskrivning}");
+
+                        foreach (var elev in ut.Elever)
+                        {
+                            newList.Add($" {elev.Förnamn}: {elev.Efternamn}");
+                        }
+                        newList.Add("");
+                    }
+    
+        //Console.Clear();
+        //var elever = context.Elever.Include(s => s.KontaktUppgifter).ToList();
+        //List<string> elevLísta = new List<string>();
+        //            foreach (var elev in elever)
+        //            {
+        //                elevLísta.Add($"{elev.Förnamn} {elev.Efternamn}");
+
+        //                foreach (var kontakt in elev.KontaktUppgifter)
+        //                {
+        //                    elevLísta.Add($" {kontakt.KontaktTyp}: {kontakt.KontaktInfo}");
+        //                }
+        //                elevLísta.Add("");
+        //            }
+        //ConsoleHelper.CenterBlock(elevLísta);
+        //Console.ReadLine();
+        
+        ConsoleHelper.CenterBlock(newList);
+                    Console.ReadLine();
+
                     ConsoleHelper.CenterAll(string.Join("\n", utbild));
                     Console.ReadLine();
                     ShowAllEducations();
@@ -130,7 +155,8 @@ internal class Meny
                     break;
                 case ConsoleKey.D4:
                 case ConsoleKey.NumPad4:
-                run = false;
+                //vi skippar detta steg genom att anropa methoder
+                //run = false;
                     ShowMainMenu();
                     break; 
 
@@ -142,7 +168,6 @@ internal class Meny
         }
 
     }
-
 
     private static void ShowAllCourses()
     {
@@ -166,17 +191,7 @@ internal class Meny
             case ConsoleKey.D1:
             case ConsoleKey.NumPad1:
                 Console.Clear();
-               // var kurser = context.Kurser;
-               // var utbild = new[]
-               //{
-               //     $"{} - {utbildning.Namn}",
-               //     "",
-               //     "Information:",
-               //     utbildning.Beskrivning ?? "(No inforamtion for this education)",
-               //     "",
-               //     "Press Enter to return."
-               // };
-                //ConsoleHelper.CenterAll(string.Join("\n", utbild));
+
                 var kurser = context.Kurser.ToList();
                 List<string> kursLísta = new List<string>();
                 foreach (var kurs in kurser)
@@ -188,17 +203,8 @@ internal class Meny
                     kursLísta.Add(t);
                     kursLísta.Add(r);
                     kursLísta.Add("");
-                    //foreach (var kursinfo in kurser)
-                    //{
-                    //    var b = $" {kursinfo.Beskrivning}";
-                    //    var c = $" {kursinfo.StartDatum} - {kursinfo.SlutDatum}";
-                    //    kursLísta.Add(b);
-                    //    kursLísta.Add(c);
-
-                    //}
-
-                    // Lägg till en tom rad för mellanrum
                 }
+
                 ConsoleHelper.CenterBlock(kursLísta);
                 Console.ReadLine();
                 break;
@@ -289,7 +295,7 @@ internal class Meny
         List<string> elevLísta = new List<string>();
         foreach (var elev in elever)
         {
-            elevLísta.Add($"{elev.Förnamn} {elev.Efternamn}");
+            elevLísta.Add($"{elev.Förnamn} {elev.Efternamn}"); 
 
             foreach (var kontakt in elev.KontaktUppgifter)
             {
@@ -299,8 +305,5 @@ internal class Meny
         }
         ConsoleHelper.CenterBlock(elevLísta);
         Console.ReadLine();
-
     }
-
-
 }
