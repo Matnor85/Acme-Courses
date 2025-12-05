@@ -73,9 +73,6 @@ internal class Meny
         ConsoleHelper.CenterMenu(menu);
         ConsoleHelper.SetCursor(4, 11);
         ConsoleKeyInfo key = Console.ReadKey(true);
-        //vi skippar detta steg genom att anropa methoder
-        //vilket betyder att vi kan lämna true i while loopen
-        //bool run = true;
         while (true)
         {
 
@@ -122,27 +119,8 @@ internal class Meny
                         }
                         newList.Add("");
                     }
-    
-        //Console.Clear();
-        //var elever = context.Elever.Include(s => s.KontaktUppgifter).ToList();
-        //List<string> elevLísta = new List<string>();
-        //            foreach (var elev in elever)
-        //            {
-        //                elevLísta.Add($"{elev.Förnamn} {elev.Efternamn}");
-
-        //                foreach (var kontakt in elev.KontaktUppgifter)
-        //                {
-        //                    elevLísta.Add($" {kontakt.KontaktTyp}: {kontakt.KontaktInfo}");
-        //                }
-        //                elevLísta.Add("");
-        //            }
-        //ConsoleHelper.CenterBlock(elevLísta);
-        //Console.ReadLine();
-        
-        ConsoleHelper.CenterBlock(newList);
-                    Console.ReadLine();
-
-                    ConsoleHelper.CenterAll(string.Join("\n", utbild));
+                    
+                    ConsoleHelper.CenterBlock(newList);
                     Console.ReadLine();
                     ShowAllEducations();
                     break;
@@ -156,8 +134,6 @@ internal class Meny
                     break;
                 case ConsoleKey.D4:
                 case ConsoleKey.NumPad4:
-                //vi skippar detta steg genom att anropa methoder
-                //run = false;
                     ShowMainMenu();
                     break; 
 
