@@ -109,7 +109,7 @@ internal class Meny
                     }
 
                     Console.Clear();
-                    var utbild = context.Utbildningar.Include(u => u.Elever).ToList();
+                    var utbild = context.Utbildningar.Include(u =>u.Elever).ToList();
                     List<string> newList = new List<string>();
                     foreach (var ut in utbild)
                     {

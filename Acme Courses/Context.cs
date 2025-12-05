@@ -71,14 +71,21 @@ public class ApplicationContext : DbContext
 
         // Elever (seed)
         modelBuilder.Entity<Elev>().HasData(
-            new Elev { ID = 1, Förnamn = "Anna", Efternamn = "Andersson"},
-            new Elev { ID = 2, Förnamn = "Björn", Efternamn = "Berg"},
-            new Elev { ID = 3, Förnamn = "Erik", Efternamn = "Eriksson"},
-            new Elev { ID = 4, Förnamn = "Sara", Efternamn = "Svensson"},
-            new Elev { ID = 5, Förnamn = "Lina", Efternamn = "Lind"},
-            new Elev { ID = 6, Förnamn = "Oskar", Efternamn = "Olsson"}
+            new Elev { ID = 1, Förnamn = "Anna", Efternamn = "Andersson" },
+            new Elev { ID = 2, Förnamn = "Björn", Efternamn = "Berg" },
+            new Elev { ID = 3, Förnamn = "Erik", Efternamn = "Eriksson" },
+            new Elev { ID = 4, Förnamn = "Sara", Efternamn = "Svensson" },
+            new Elev { ID = 5, Förnamn = "Lina", Efternamn = "Lind" },
+            new Elev { ID = 6, Förnamn = "Oskar", Efternamn = "Olsson", }
         );
-
+        modelBuilder.Entity<Dictionary<string, object>>("ElevUtbildning").HasData(
+            new { EleverID = 1, UtbildningarID = 1 },
+            new { EleverID = 2, UtbildningarID = 1 },
+            new { EleverID = 3, UtbildningarID = 2 },
+            new { EleverID = 4, UtbildningarID = 3 },
+            new { EleverID = 5, UtbildningarID = 3 },
+            new { EleverID = 6, UtbildningarID = 3 }
+        );
         // Kurser (seed)
         modelBuilder.Entity<Kurs>().HasData(
             new Kurs { ID = 1, UtbildningID = 1, Namn = "C# Grund", Beskrivning = "Introduktion till C# och .NET", StartDatum = new DateTime(2025, 9, 1), SlutDatum = new DateTime(2025, 12, 15) },
