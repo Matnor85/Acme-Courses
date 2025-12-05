@@ -113,6 +113,7 @@ internal class Meny
                     List<string> newList = new List<string>();
                     foreach (var ut in utbild)
                     {
+                        if (ut.ID != yada) continue;
                         newList.Add($"{ut.ID} {ut.Namn} {ut.Beskrivning}");
 
                         foreach (var elev in ut.Elever)
