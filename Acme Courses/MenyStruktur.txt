@@ -5,6 +5,7 @@ Visa alla elever:
 -Kontaktuppgifter för varje elev?
 
 Visa kontaktuppgifter:
+-Visa namn och efternamn
 -Vissa alla e-post addresser
 -Visa alla telefonnummer
 
@@ -12,3 +13,7 @@ Visa alla utbildningar:
 -Namnet på alla utbildningar
 -Start och slutdatum
 -Vilka kurser som finns i varje utbildning
+
+Kurser:
+-Lägga till vilka kurser som hör ihop med respektive utbildning?
+
