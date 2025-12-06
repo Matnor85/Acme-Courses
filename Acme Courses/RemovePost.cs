@@ -50,7 +50,7 @@ public class RemovePost()
         ConsoleHelper.CenterBlock(elevList);
         //ConsoleHelper.CenterMenu();
 
-        ConsoleHelper.CenterAll("Enter the number of the row ýou wish to edit.");
+        ConsoleHelper.CenterAll("Enter the number of the row you wish to edit.");
         ConsoleKeyInfo key = Console.ReadKey(true);
 
         if (int.TryParse(key.KeyChar.ToString(), out int yada))
