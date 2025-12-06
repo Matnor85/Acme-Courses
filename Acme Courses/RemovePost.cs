@@ -44,30 +44,36 @@ public class RemovePost()
         List<int> ID = new List<int>();
         foreach (var item in q)
         {
-
-            elevList.Add(string.Join($"{item.Förnamn}", $"{item.Efternamn}"));
+            elevList.Add(string.Join($" {item.Förnamn}", $"{item.ID}", $"{item.Efternamn}"));
             ID.Add(item.ID);
         }
-        ConsoleHelper.CenterAll($"{ID} {elevList}");
+        ConsoleHelper.CenterBlock(elevList);
         //ConsoleHelper.CenterMenu();
 
         ConsoleHelper.CenterAll("Enter the number of the row ýou wish to edit.");
         ConsoleKeyInfo key = Console.ReadKey(true);
 
-        if (int.Parse(key.ToString()!) <= ID.Count)
+        if (int.TryParse(key.KeyChar.ToString(), out int yada))
         {
-            var x = context.Elever
-                .Select(x => new { x.ID, x.Förnamn, x.Efternamn })
-                .Where(x => x.ID == int.Parse(key.ToString()!));
-        }
-        else
-        {
-            Console.Clear();
-            ConsoleHelper.CenterAll("You gave an invalid ID");
+            if (yada <= ID.Count && yada >= 0)
+            {
+                var que = context.Elever
+                    .Select(x => new { x.ID, x.Förnamn, x.Efternamn })
+                    .Where(x => x.ID == int.Parse(key.ToString()!));
+                return (q.First().Förnamn, q.First().Efternamn);
+            }
+            else
+            {
+                Console.Clear();
+                Console.SetCursorPosition(Console.WindowWidth / 2, Console.WindowHeight / 2);
+                throw new Exception("Invalid ID");
+            }
+            throw new Exception("Sitt på en kaktus");
         }
 
+        throw new Exception("Sitt på en kaktus");
 
-        throw new NotImplementedException();
+
     }
 
     private static void AreYouSure()
