@@ -168,7 +168,7 @@ public class AddPost()
             context.Elever.Add(std);
 
             intCheck = AreYouSure();
-            while (intCheck == 1)
+            if (intCheck == 1)
             {
                 Console.Clear();
                 var q = context.Elever
@@ -227,7 +227,7 @@ public class AddPost()
                 ConsoleHelper.CenterMenu(Check);
                 AreYouSure();
             }
-            /*else */if (intCheck == 2) { Meny.ShowAllStudents(); }
+            else if (intCheck == 2) { Meny.ShowAllStudents(); }
             else
             {
                 ConsoleHelper.CenterAll("Invalid input!");
