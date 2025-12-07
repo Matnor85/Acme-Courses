@@ -16,11 +16,10 @@ internal class Meny
         bool runMenu = true;
         while (runMenu)
         {
-
             string[] menu =
-            ["=== Acme school ===",
+            ["==== Acme school ====",
             "",
-            "1. Show all studens",
+            "1. Show all students",
             "2. Show all courses",
             "3. Show all educations",
             "4. Exit",
@@ -58,7 +57,7 @@ internal class Meny
     {
         Console.Clear();
         string[] menu =
-           ["=== Educations ===",
+           ["==== Educations ====",
             "",
             "1. Show all educations",
             "2. Add education",
@@ -72,7 +71,6 @@ internal class Meny
         ConsoleKeyInfo key = Console.ReadKey(true);
         while (true)
         {
-
             switch (key.KeyChar) // Education Menu
             {
                 case '1':
@@ -136,14 +134,13 @@ internal class Meny
                     break;
             }
         }
-
     }
 
     private static void ShowAllCourses()
     {
         Console.Clear();
         string[] menu =
-           ["=== Courses ===",
+           ["==== Courses ====",
             "",
             "1. Show all courses",
             "2. Add course",
@@ -160,7 +157,6 @@ internal class Meny
         {
             case '1':
                 Console.Clear();
-
                 var kurser = context.Kurser.Include(kl=>kl.Kursledare).ToList();
                 List<string> kursLista = new List<string>();
                 foreach (var kurs in kurser)
@@ -176,31 +172,27 @@ internal class Meny
                 Console.ReadKey(true);
                 break;
             case '2':
-                for (int i = 0; i < 50; i++)
-                {
-                ShowAllCourses();
-                }
+                AddPost.AddKursManuellt();
 
                 break;
             case '3':
                 ShowAllCourses();
                 break;
             case '4':
-                return;
+                break;
             default:
                 ConsoleHelper.Sound();
                 ConsoleHelper.CenterAll("Invalid choice");
                 Console.ReadKey(true);
                 break;
         }
-
     }
 
     private static void ShowAllStudents()
     {
         Console.Clear();
         string[] menu =
-            ["=== Students ===",
+            ["==== Students ====",
             "",
             "1. Show all students",
             "2. Contact informations",
@@ -218,7 +210,6 @@ internal class Meny
         {
             case '1':
                 Console.Clear();
-
                 var fullNames = context.Elever
                     .Select(e => $"{e.Förnamn} {e.Efternamn}")
                     .ToList();
@@ -231,9 +222,9 @@ internal class Meny
                 {
                     ConsoleHelper.CenterBlock(fullNames);
                 }
-
                 Console.ReadKey(true);
                 break;
+
             case '2':
                 ContactInformations();
                 break;
@@ -244,7 +235,7 @@ internal class Meny
                 RemovePost.RemoveFrom();
                 break;
             case '5':
-                return;
+                break;
             default:
                 ConsoleHelper.Sound();
                 ConsoleHelper.CenterAll("Invalid choice");

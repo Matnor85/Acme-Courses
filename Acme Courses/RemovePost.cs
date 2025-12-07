@@ -72,8 +72,6 @@ public class RemovePost()
         }
 
         throw new Exception("Sitt på en kaktus");
-
-
     }
 
     private static void AreYouSure()

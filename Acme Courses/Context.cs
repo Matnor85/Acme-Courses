@@ -9,7 +9,7 @@ namespace Acme_Courses;
 
 public class ApplicationContext : DbContext
 {
-    //public DbSet<Kursledare> Lärare { get; set; } = null!;
+    public DbSet<Kursledare> Kursledare { get; set; } = null!;
     //public DbSet<Klass> Klasser { get; set; } = null!;
     public DbSet<Elev> Elever { get; set; } = null!;
     public DbSet<Kurs> Kurser { get; set; } = null!;
