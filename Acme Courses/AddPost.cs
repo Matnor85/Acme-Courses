@@ -32,8 +32,8 @@ public class AddPost()
         ConsoleHelper.CenterAll("Enter start date (YYYY-MM-DD): ");
         ConsoleHelper.SetCursor(1, 0);
         DateOnly startDatum;
-
-        while (!DateOnly.TryParse(Console.ReadLine(), out startDatum))
+        string txt2 = EnterDate();
+        while (!DateOnly.TryParse(txt2, out startDatum))
         {
             Console.Clear();
             ConsoleHelper.CenterAll("Invalid format! Please try again (YYYY-MM-DD): ");
@@ -43,8 +43,9 @@ public class AddPost()
         ConsoleHelper.CenterAll("Enter end date (YYYY-MM-DD): ");
         ConsoleHelper.SetCursor(1, 0);
         DateOnly slutDatum;
+        string txt3 = EnterDate();
 
-        while (!DateOnly.TryParse(Console.ReadLine(), out slutDatum))
+        while (!DateOnly.TryParse(txt3, out slutDatum))
         {
             Console.Clear();
             ConsoleHelper.CenterAll("Invalid format! Please try again (YYYY-MM-DD): ");
@@ -120,6 +121,29 @@ public class AddPost()
              "Press any key to continue..."];
         ConsoleHelper.CenterMenu(end);
         Console.ReadKey(true);
+    }
+
+    private static string EnterDate()
+    {
+        char[] txt = new char[10];
+        for (int i = 0; i < txt.Length; i++)
+        {
+            if (i == 4 || i == 7)
+            {
+                Console.Write("-");
+                txt[i] = '-';
+            }
+            else
+                txt[i] = Console.ReadKey().KeyChar;
+        }
+
+        string txt2 = null;
+        foreach (var item in txt)
+        {
+            txt2 += item;
+        }
+
+        return txt2;
     }
 
     /*---------------------------------------------------------------------------------*/
