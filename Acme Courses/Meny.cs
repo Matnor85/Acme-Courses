@@ -210,6 +210,7 @@ internal class Meny
         {
             case '1':
                 Console.Clear();
+                //Cant keep up if you press to fast
                 var fullNames = context.Elever
                     .Select(e => $"{e.Förnamn} {e.Efternamn}")
                     .ToList();

@@ -13,12 +13,17 @@ public class RemovePost()
     public static void RemoveFrom()
     {
         var namn = UserChoice();
-        Console.WriteLine(namn.förnamn);
-        var std = context.Elever
-            .Select(e => new { e.Förnamn, e.Efternamn })
-            .Where(e => e.Förnamn == namn.förnamn && e.Efternamn == namn.efternamn);
+        //Console.WriteLine(namn.förnamn);
+        //var std = context.Elever
+        //    .Select(e => new { e.Förnamn, e.Efternamn })
+        //    .Where(e => e.Förnamn == namn.förnamn && e.Efternamn == namn.efternamn);
 
-        if (std == null)
+        var elevToRemove = context.Elever
+            .FirstOrDefault(e => e.Förnamn == namn.förnamn && e.Efternamn == namn.efternamn);
+
+        context.Elever.Remove(elevToRemove!);
+
+        if (elevToRemove == null!)
         {
             ConsoleHelper.CenterAll("Student not found!");
             return;
@@ -36,10 +41,12 @@ public class RemovePost()
             .OrderBy(q => q.ID);
         List<string> elevList = new List<string>();
         List<int> ID = new List<int>();
+        int i = 1;
         foreach (var item in q)
         {
-            elevList.Add(string.Join($" {item.Förnamn} ", $"{item.ID}", $"{item.Efternamn}"));
+            elevList.Add(string.Join($" {item.Förnamn} ", $"{i}", $"{item.Efternamn}"));
             ID.Add(item.ID);
+            i++;
         }
         ConsoleHelper.CenterBlock(elevList);
 
@@ -51,7 +58,7 @@ public class RemovePost()
             if (yada <= ID.Count && yada >= 0)
             {
                 //Hämtar listan ifrån den övre queryn och sedan specifierar vilket namn vi vill ha med yada ifrån TryParsen åvan.
-                var namn = elevList[yada];   
+                var namn = elevList[yada-1];   
                 var namnParts = namn.Split(' ');
                 //delar upp stringen så vi kan använda den till queryn i RemoveFrom();
                 if (namnParts.Length >= 3)
