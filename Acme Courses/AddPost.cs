@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Acme_Courses;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -137,7 +138,7 @@ public class AddPost()
                 txt[i] = Console.ReadKey().KeyChar;
         }
 
-        string txt2 = null;
+        string txt2 = null!;
         foreach (var item in txt)
         {
             txt2 += item;
@@ -168,10 +169,7 @@ public class AddPost()
 
             intCheck = AreYouSure();
             while (intCheck == 1)
-            { 
-            //}
-            //if (intCheck == 1)
-            //{
+            {
                 Console.Clear();
                 var q = context.Elever
                     .Where(q => q.Förnamn == namnParts[0] && q.Efternamn == namnParts[1])
@@ -268,3 +266,5 @@ public class AddPost()
         }
     }
 }
+
+
