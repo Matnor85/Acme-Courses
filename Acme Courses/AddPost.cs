@@ -151,7 +151,7 @@ public class AddPost()
                     .Select(q => q.ID);
                 var elevID = 0;
                 foreach (var item in q) { elevID = item; }
-                for (int i = 0; i < namnParts.Length; i++) { namnParts[i] = ""; }
+                //for (int i = 0; i < namnParts.Length; i++) { namnParts[i] = ""; }
 
                 var kontaktTyp = "";
                 string EmailMobilNumber = "";
