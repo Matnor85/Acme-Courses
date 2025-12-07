@@ -176,9 +176,10 @@ internal class Meny
 
                 break;
             case '3':
-                RemovePost.CourseChoice();
+                RemovePost.RemoveFrom("Kurs");
                 break;
             case '4':
+                ShowAllEducations();
                 break;
             default:
                 ConsoleHelper.Sound();
@@ -233,7 +234,7 @@ internal class Meny
                 AddPost.AddTo();
                 break;
             case '4':
-                RemovePost.RemoveFrom();
+                RemovePost.RemoveFrom("Students");
                 break;
             case '5':
                 break;

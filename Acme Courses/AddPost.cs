@@ -132,7 +132,7 @@ public class AddPost()
         ConsoleHelper.CenterAll("Enter here the entire namne of the new student: ");
         Console.SetCursorPosition(Console.WindowWidth / 2 + "Enter here the entire namne of the new student: ".Length / 2, Console.WindowHeight / 2);
         var namn = Console.ReadLine();
-        string[] tempName;
+        //string[] tempName;
         var namnParts = namn!.Split(' ');
         if (namnParts.Length == 2)
         {
@@ -157,25 +157,25 @@ public class AddPost()
                 var kontaktTyp = "";
                 string EmailMobilNumber = "";
 
-        kontaktTyp = "E-post";
-        string[] menu =
-           ["==== Choose an Email address ====",
-            "(leave the field blank if you don't wish to enter an email at this time)"];
-        ConsoleHelper.CenterMenu(menu);
-        Console.SetCursorPosition(Console.WindowWidth / 2, Console.WindowHeight / 2 + 3);
-        EmailMobilNumber = Console.ReadLine()!;
-        Console.Clear();
+        //kontaktTyp = "E-post";
+        //string[] menu =
+        //   ["==== Choose an Email address ====",
+        //    "(leave the field blank if you don't wish to enter an email at this time)"];
+        //ConsoleHelper.CenterMenu(menu);
+        //Console.SetCursorPosition(Console.WindowWidth / 2, Console.WindowHeight / 2 + 3);
+        //EmailMobilNumber = Console.ReadLine()!;
+        //Console.Clear();
 
-        if (EmailMobilNumber.IsNullOrEmpty())
-            EmailMobilNumber = "-";
+        //if (EmailMobilNumber.IsNullOrEmpty())
+        //    EmailMobilNumber = "-";
 
-            var std2 = new KontaktUppgift()
-            {
-                KontaktTyp = $"{kontaktTyp}",
-                KontaktInfo = $"{EmailMobilNumber}",
-                ElevID = elevID
-            };
-            context.Kontaktuppgifter.Add(std2);
+        //    var std2 = new KontaktUppgift()
+        //    {
+        //        KontaktTyp = $"{kontaktTyp}",
+        //        KontaktInfo = $"{EmailMobilNumber}",
+        //        ElevID = elevID
+        //    };
+        //      context.Kontaktuppgifter.Add(std2);
                 kontaktTyp = "E-post";
                 string[] menu =
                    ["==== Choose an Email address ====",

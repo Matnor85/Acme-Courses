@@ -10,76 +10,73 @@ public class RemovePost()
 {
     static ApplicationContext context = new ApplicationContext();
 
-    public static void RemoveFrom()
+    public static void RemoveFrom(string nameOfKlass)
     {
-        var namn = UserChoice();
-        //Console.WriteLine(namn.förnamn);
-        //var std = context.Elever
-        //    .Select(e => new { e.Förnamn, e.Efternamn })
-        //    .Where(e => e.Förnamn == namn.förnamn && e.Efternamn == namn.efternamn);
-
-        var elevToRemove = context.Elever
-            .FirstOrDefault(e => e.Förnamn == namn.förnamn && e.Efternamn == namn.efternamn);
-
-        context.Elever.Remove(elevToRemove!);
-
-        if (elevToRemove == null!)
+        if (nameOfKlass == "Students")
         {
-            ConsoleHelper.CenterAll("Student not found!");
-            return;
-        }
+            var namn = StudentChoice();
 
-        AreYouSure();
+            var elevToRemove = context.Elever
+                .FirstOrDefault(e => e.Förnamn == namn.förnamn && e.Efternamn == namn.efternamn);
+
+            context.Elever.Remove(elevToRemove!);
+
+            if (elevToRemove == null!)
+            {
+                ConsoleHelper.CenterAll("Student not found!");
+                return;
+            }
+            AreYouSure();
+        }
+        else if (nameOfKlass == "Kurs")
+        {
+            var namn = CourseChoice();
+
+            var kursToRemove = context.Kurser
+                .FirstOrDefault(e => e.Namn == namn);
+
+            context.Kurser.Remove(kursToRemove!);
+
+            AreYouSure();
+        }
+        else
+        {
+            Console.WriteLine("Invalid name of klass given");
+            Thread.Sleep(1500);
+        }
     }
-    public static void CourseChoice()
+    private static string CourseChoice()
     {
         Console.Clear();
         var q = context.Kurser
             .Select(q => new { q.ID, q.Namn })
             .OrderBy(q => q.ID);
         List<string> kursList = new List<string>();
+        List<string> kursNamn = new List<string>();
         List<int> ID = new List<int>();
         int i = 1;
         foreach (var item in q)
         {
-            kursList.Add(string.Join($" {item.Namn} ", $"{item.ID}."));
+            kursList.Add($"{i} {item.Namn}");
+            kursNamn.Add($"{item.Namn}");
             ID.Add(item.ID);
+            i++;
         }
 
         ConsoleHelper.CenterBlock(kursList);
         ConsoleHelper.OscarOchAron("Enter the number of the course you wish to edit: ");
         var position = Console.GetCursorPosition();
         Console.SetCursorPosition(position.Left, position.Top);
-        string key = Console.ReadLine();
-        if (int.TryParse(key, out int input))
-        {
-            if (input <= ID.Count && input >= 0)
-            {
-                //Hämtar listan ifrån den övre queryn och sedan specifierar vilket namn vi vill ha med yada ifrån TryParsen åvan.
-                var namn = kursList[input - 1];
-                var namnParts = namn.Split(' ');
-                //delar upp stringen så vi kan använda den till queryn i RemoveFrom();
-                if (namnParts.Length >= 2)
-                {
-                    string kursNamn = namnParts[1];
-                }
-                else
-                {
-                    throw new Exception("Invalid name format");
-                }
-            }
-            else
-            {
-                Console.Clear();
-                Console.SetCursorPosition(Console.WindowWidth / 2, Console.WindowHeight / 2);
-                throw new Exception("Invalid ID");
-            }
-            throw new Exception("Sitt på en kaktus");
+        string key = Console.ReadLine()!;
+        int input;
+        while (!int.TryParse(key, out input) && 0 <= input && input <= ID.Count()) {
+            Console.WriteLine("Invalid Id");
+            key = Console.ReadLine()!;
         }
-
-
+        var kurs = kursNamn[input];
+        return kurs;
     }
-    private static (string förnamn, string efternamn) UserChoice()
+    private static (string förnamn, string efternamn) StudentChoice()
     {
         Console.Clear();
 
@@ -99,7 +96,7 @@ public class RemovePost()
         ConsoleHelper.OscarOchAron("Enter the number of the row you wish to edit: ");
         var position=Console.GetCursorPosition();
         Console.SetCursorPosition(position.Left, position.Top);
-        string key = Console.ReadLine();
+        string key = Console.ReadLine()!;
 
         if (int.TryParse(key, out int input))
         {
@@ -117,18 +114,23 @@ public class RemovePost()
                 }
                 else
                 {
-                    throw new Exception("Invalid name format");
+                    Console.WriteLine("Invalid ID");
+                    return StudentChoice();
                 }
             }
             else
             {
                 Console.Clear();
                 Console.SetCursorPosition(Console.WindowWidth / 2, Console.WindowHeight / 2);
-                throw new Exception("Invalid ID");
+                Console.WriteLine("Invalid ID");
+                return StudentChoice();
             }
-            throw new Exception("Sitt på en kaktus");
         }
-        throw new Exception("Sitt på en kaktus");
+        else
+        { 
+            Console.WriteLine("Invalid ID");
+            return StudentChoice();
+        }
     }
 
     private static void AreYouSure()
