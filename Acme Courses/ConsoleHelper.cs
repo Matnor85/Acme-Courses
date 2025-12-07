@@ -59,6 +59,27 @@ internal class ConsoleHelper
         foreach (var line in lines)
             Console.WriteLine(CenterText(line, totalWidth));
     }
+    public static void OscarOchAron(string text)
+    {
+        // Konsolens totala bredd.
+        int totalWidth = Console.WindowWidth;
+        // Konsolens totala höjd.
+        int totalHeight = Console.WindowHeight;
+
+        // Dela upp texten i rader om det finns radbrytningar.
+        string[] lines = text.Replace("\r", "").Split('\n');
+
+        // Beräkna hur många tomma rader som behövs ovanför för att centrera vertikalt.
+        int topPadding = (totalHeight / 2) - (lines.Length / 2);
+
+        // Skriv ut tomma rader ovanför.
+        for (int i = 0; i < topPadding; i++)
+            Console.WriteLine();
+
+        // Skriv ut varje rad centrerad horisontellt med hjälp av CenterText.
+        foreach (var line in lines)
+            Console.Write(CenterText(line, totalWidth));
+    }
 
     // Centrerar en sträng arrays alla element som jag använder för att visa meny valen
     // Denna är nästan identisk mot CenterAll metoden förutom att denna hanterar en array istället för en sträng.

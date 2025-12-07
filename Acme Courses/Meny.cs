@@ -176,7 +176,7 @@ internal class Meny
 
                 break;
             case '3':
-                ShowAllCourses();
+                RemovePost.CourseChoice();
                 break;
             case '4':
                 break;
