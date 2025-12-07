@@ -128,7 +128,7 @@ public class AddPost()
         var namn = Console.ReadLine();
         var namnParts = namn!.Split(' ');
         if (namnParts.Length == 2)
-        { 
+        {
             var std = new Elev()
             {
                 Förnamn = $"{namnParts[0]}",
@@ -136,110 +136,90 @@ public class AddPost()
             };
             context.Elever.Add(std);
         }
-        else 
+        else
         {
             Console.WriteLine("The name your entering must only be a two parter");
             Thread.Sleep(2000);
             AddTo();
         }
 
-        int intCheck = AreYouSure();
-        if(intCheck == 1)
+        context.SaveChanges();
+        Console.Clear();
+
+        var q = context.Elever
+            .Where(q => q.Förnamn == namnParts[0] && q.Efternamn == namnParts[1])
+            .Select(q => q.ID);
+
+        var elevID = 0;
+        foreach (var item in q) { elevID = item; }
+
+        var kontaktTyp = "";
+        string EmailMobilNumber = "";
+
+        kontaktTyp= "E-post";
+        string[] menu =
+           ["==== Choose an Email address ====",];
+        ConsoleHelper.CenterMenu(menu);
+        Console.WriteLine("Enter Email");
+        EmailMobilNumber = Console.ReadLine()!;
+        Console.Clear();
+
+        var std2 = new KontaktUppgift()
         {
-            var kontaktTyp = "";
-            string EmailMobilNumber = "";
-            string[] menu =
-               ["==== Choose a contactype ====",
-                "",
-                "1. E-mail",
-                "2. MobilPhone",
-                "3. Back",
-                "",
-                "Please select an option: "];
-            Console.Clear();
-            ConsoleHelper.CenterMenu(menu);
-            while (true)
-            {
-            
-                var key = Console.ReadKey(true);
-                switch (char.ToLower(key.KeyChar))
-                {
-                    case '1':
-                        kontaktTyp = "E-post";
-                        Console.WriteLine("Enter Email");
-                        EmailMobilNumber = Console.ReadLine()!;
-                        Console.Clear();
-                        break;
-                    case '2':
-                        kontaktTyp = "Telefon";
-                        Console.WriteLine("Enter phonenumber");
-                        EmailMobilNumber = Console.ReadLine()!;
-                        Console.Clear();
-                        break;
-                    case '3':
-                        Meny.ShowAllStudents();
-                        return;
-                    default:
-                        Console.Clear();
-                        ConsoleHelper.CenterAll("Invalid input!");
-                        Thread.Sleep(1000);
-                        return;
-                }
-                        Console.WriteLine("");
+            KontaktTyp = $"{kontaktTyp}",
+            KontaktInfo = $"{EmailMobilNumber}",
+            ElevID = elevID
+        };
+        context.Kontaktuppgifter.Add(std2);
 
-                    var q = context.Elever
-                        .Where(q => q.Förnamn == namnParts[0] && q.Efternamn == namnParts[1])
-                        .Select(q => q.ID);
-            
-                    var elevID = 0;
-                    foreach (var item in q) {elevID = item;}
+        kontaktTyp = "Telefon";
+        string[] menu2 =
+           ["==== Choose a Phonenumber====",];
+        ConsoleHelper.CenterMenu(menu2);
+        EmailMobilNumber = Console.ReadLine()!;
+        Console.Clear();
 
-                    var std2 = new KontaktUppgift()
-                    {
-                        KontaktTyp = $"{kontaktTyp}",
-                        KontaktInfo = $"{EmailMobilNumber}",
-                        ElevID = elevID
-                    };
-                    context.Kontaktuppgifter.Add(std2);
-        
-                intCheck = AreYouSure();
-                if (intCheck == 3) {AreYouSure();}
+        var std3 = new KontaktUppgift()
+        {
+            KontaktTyp = $"{kontaktTyp}",
+            KontaktInfo = $"{EmailMobilNumber}",
+            ElevID = elevID
+        };
+        context.Kontaktuppgifter.Add(std3);
+        Console.Clear();
+        string[] Check =
+            [$"You are about to add the following student:",
+             $"Name: {namn}",
+             $"Email: {std2.KontaktInfo}",
+             $"Phone: {std3.KontaktInfo}",];
 
-                //add mobil number aswell as Email
-                if (Equals(key, 1))
-                {
-                    Console.WriteLine($"Do you also want to enter ");
-                    Console.ReadKey(true);
-                }
-            }
-        }
-        else if(intCheck == 3) { AreYouSure(); }
-        else {Meny.ShowAllStudents();}
+        ConsoleHelper.CenterMenu(Check);
+        AreYouSure();
     }
+
 
     private static int AreYouSure()
     {
-        Console.Clear();
         ConsoleHelper.CenterAll("Are you sure?: [Y] = YES or [N] for no");
         Console.WriteLine();
         Console.WriteLine();
-        
+
         ConsoleKeyInfo key = Console.ReadKey(true);
 
         switch (char.ToLower(key.KeyChar))
         {
             case 'y':
                 context.SaveChanges();
-                Meny.ShowAllStudents();
+                //Meny.ShowAllStudents();
                 return 1;
             case 'n':
-                Meny.ShowAllStudents();
+                //Meny.ShowAllStudents();
                 return 2;
             default:
                 ConsoleHelper.CenterAll("Invalid input!");
                 Thread.Sleep(1500);
                 Console.Clear();
-            return 3;
+                return 3;
         }
     }
 }
