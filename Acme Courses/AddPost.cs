@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -124,7 +125,8 @@ public class AddPost()
     public static void AddTo()
     {
         Console.Clear();
-        ConsoleHelper.CenterAll("Enter here the entire namne of the new student");
+        ConsoleHelper.CenterAll("Enter here the entire namne of the new student: ");
+        Console.SetCursorPosition(Console.WindowWidth / 2+ "Enter here the entire namne of the new student: ".Length/2, Console.WindowHeight / 2 );
         var namn = Console.ReadLine();
         var namnParts = namn!.Split(' ');
         if (namnParts.Length == 2)
@@ -156,28 +158,36 @@ public class AddPost()
         var kontaktTyp = "";
         string EmailMobilNumber = "";
 
-        kontaktTyp= "E-post";
+        kontaktTyp = "E-post";
         string[] menu =
-           ["==== Choose an Email address ====",];
+           ["==== Choose an Email address ====",
+            "(leave the field blank if you don't wish to enter an email at this time)"];
         ConsoleHelper.CenterMenu(menu);
-        Console.WriteLine("Enter Email");
+        Console.SetCursorPosition(Console.WindowWidth / 2, Console.WindowHeight / 2 + 3);
         EmailMobilNumber = Console.ReadLine()!;
         Console.Clear();
 
-        var std2 = new KontaktUppgift()
-        {
-            KontaktTyp = $"{kontaktTyp}",
-            KontaktInfo = $"{EmailMobilNumber}",
-            ElevID = elevID
-        };
-        context.Kontaktuppgifter.Add(std2);
+        if (EmailMobilNumber.IsNullOrEmpty())
+            EmailMobilNumber = null;
+
+            var std2 = new KontaktUppgift()
+            {
+                KontaktTyp = $"{kontaktTyp}",
+                KontaktInfo = $"{EmailMobilNumber}",
+                ElevID = elevID
+            };
+            context.Kontaktuppgifter.Add(std2);
 
         kontaktTyp = "Telefon";
         string[] menu2 =
-           ["==== Choose a Phonenumber====",];
+           ["==== Choose a Phonenumber====",
+        "(leave the field blank if you don't wish to enter an email at this time)"];
         ConsoleHelper.CenterMenu(menu2);
+        Console.SetCursorPosition(Console.WindowWidth / 2, Console.WindowHeight/2 +3);
         EmailMobilNumber = Console.ReadLine()!;
         Console.Clear();
+        if (EmailMobilNumber.IsNullOrEmpty())
+            EmailMobilNumber = null;
 
         var std3 = new KontaktUppgift()
         {
