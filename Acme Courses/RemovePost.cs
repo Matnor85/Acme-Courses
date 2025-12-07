@@ -66,70 +66,61 @@ public class RemovePost()
         ConsoleHelper.CenterBlock(kursList);
         ConsoleHelper.OscarOchAron("Enter the number of the course you wish to edit: ");
         var position = Console.GetCursorPosition();
-        Console.SetCursorPosition(position.Left, position.Top);
+        Console.SetCursorPosition(position.Left-34, position.Top);
         string key = Console.ReadLine()!;
         int input;
         while (!int.TryParse(key, out input) && 0 <= input && input <= ID.Count()) {
             Console.WriteLine("Invalid Id");
             key = Console.ReadLine()!;
         }
-        var kurs = kursNamn[input];
+        var kurs = kursNamn[input-1];
         return kurs;
     }
     private static (string förnamn, string efternamn) StudentChoice()
     {
-        Console.Clear();
-
-        var q = context.Elever
-            .Select(q => new { q.ID, q.Förnamn, q.Efternamn })
-            .OrderBy(q => q.ID);
-        List<string> elevList = new List<string>();
-        List<int> ID = new List<int>();
-        int i = 1;
-        foreach (var item in q)
+        while (true)
         {
-            elevList.Add(string.Join($" {item.Förnamn} ", $"{i}", $"{item.Efternamn}"));
-            ID.Add(item.ID);
-            i++;
-        }
-        ConsoleHelper.CenterBlock(elevList);
-        ConsoleHelper.OscarOchAron("Enter the number of the row you wish to edit: ");
-        var position=Console.GetCursorPosition();
-        Console.SetCursorPosition(position.Left, position.Top);
-        string key = Console.ReadLine()!;
 
-        if (int.TryParse(key, out int input))
-        {
-            if (input <= ID.Count && input >= 0)
+            Console.Clear();
+
+            var q = context.Elever
+                .Select(q => new { q.ID, q.Förnamn, q.Efternamn })
+                .OrderBy(q => q.ID);
+            List<string> elevList = new List<string>();
+            List<int> ID = new List<int>();
+            int i = 1;
+            foreach (var item in q)
             {
-                //Hämtar listan ifrån den övre queryn och sedan specifierar vilket namn vi vill ha med yada ifrån TryParsen åvan.
-                var namn = elevList[input-1];   
-                var namnParts = namn.Split(' ');
-                //delar upp stringen så vi kan använda den till queryn i RemoveFrom();
-                if (namnParts.Length >= 3)
+                elevList.Add(string.Join($" {item.Förnamn} ", $"{i}", $"{item.Efternamn}"));
+                ID.Add(item.ID);
+                i++;
+            }
+            elevList.Add("");
+            elevList.Add("");
+            elevList.Add("Enter the number of the row you wish to edit: ");
+            ConsoleHelper.CenterBlock(elevList);
+            //ConsoleHelper.OscarOchAron("Enter the number of the row you wish to edit: ");
+            var position=Console.GetCursorPosition();
+            Console.SetCursorPosition(position.Left+84, position.Top-1);
+            string key = Console.ReadLine()!;
+            while (!int.TryParse(key, out int input))
+            {
+                while (input !<= ID.Count && input !>= 0)
                 {
-                    string förnamn = namnParts[1];
-                    string efternamn = namnParts[2];
-                    return (förnamn, efternamn);
-                }
-                else
-                {
-                    Console.WriteLine("Invalid ID");
-                    return StudentChoice();
+
+            
+                    //Hämtar listan ifrån den övre queryn och sedan specifierar vilket namn vi vill ha med yada ifrån TryParsen åvan.
+                    var namn = elevList[input-1];   
+                    var namnParts = namn.Split(' ');
+                    //delar upp stringen så vi kan använda den till queryn i RemoveFrom();
+                    while (namnParts.Length >= 3)
+                    {
+                        string förnamn = namnParts[1];
+                        string efternamn = namnParts[2];
+                        return (förnamn, efternamn);
+                    }
                 }
             }
-            else
-            {
-                Console.Clear();
-                Console.SetCursorPosition(Console.WindowWidth / 2, Console.WindowHeight / 2);
-                Console.WriteLine("Invalid ID");
-                return StudentChoice();
-            }
-        }
-        else
-        { 
-            Console.WriteLine("Invalid ID");
-            return StudentChoice();
         }
     }
 
