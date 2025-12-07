@@ -73,7 +73,7 @@ public class RemovePost()
             Console.WriteLine("Invalid Id");
             key = Console.ReadLine()!;
         }
-        var kurs = kursNamn[input];
+        var kurs = kursNamn[input-1];
         return kurs;
     }
     private static (string förnamn, string efternamn) StudentChoice()
