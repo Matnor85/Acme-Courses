@@ -128,6 +128,7 @@ public class AddPost()
         ConsoleHelper.CenterAll("Enter here the entire namne of the new student: ");
         Console.SetCursorPosition(Console.WindowWidth / 2+ "Enter here the entire namne of the new student: ".Length/2, Console.WindowHeight / 2 );
         var namn = Console.ReadLine();
+        string[] tempName;
         var namnParts = namn!.Split(' ');
         if (namnParts.Length == 2)
         {
@@ -168,7 +169,7 @@ public class AddPost()
         Console.Clear();
 
         if (EmailMobilNumber.IsNullOrEmpty())
-            EmailMobilNumber = null;
+            EmailMobilNumber = "-";
 
             var std2 = new KontaktUppgift()
             {
@@ -187,7 +188,7 @@ public class AddPost()
         EmailMobilNumber = Console.ReadLine()!;
         Console.Clear();
         if (EmailMobilNumber.IsNullOrEmpty())
-            EmailMobilNumber = null;
+            EmailMobilNumber = "-";
 
         var std3 = new KontaktUppgift()
         {
@@ -224,6 +225,7 @@ public class AddPost()
                 return 1;
             case 'n':
                 //Meny.ShowAllStudents();
+                context.Elever.Local.Clear();
                 return 2;
             default:
                 ConsoleHelper.CenterAll("Invalid input!");

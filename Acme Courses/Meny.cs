@@ -19,9 +19,9 @@ internal class Meny
             string[] menu =
             ["==== Acme school ====",
             "",
-            "1. Show all students",
-            "2. Show all courses",
-            "3. Show all educations",
+            "1. Students",
+            "2. Courses",
+            "3. Educations",
             "4. Exit",
             "",
             "Please select an option: "];
