@@ -32,8 +32,8 @@ public class AddPost()
         ConsoleHelper.CenterAll("Enter start date (YYYY-MM-DD): ");
         ConsoleHelper.SetCursor(1, 0);
         DateOnly startDatum;
-
-        while (!DateOnly.TryParse(Console.ReadLine(), out startDatum))
+        string txt2 = EnterDate();
+        while (!DateOnly.TryParse(txt2, out startDatum))
         {
             Console.Clear();
             ConsoleHelper.CenterAll("Invalid format! Please try again (YYYY-MM-DD): ");
@@ -43,8 +43,9 @@ public class AddPost()
         ConsoleHelper.CenterAll("Enter end date (YYYY-MM-DD): ");
         ConsoleHelper.SetCursor(1, 0);
         DateOnly slutDatum;
+        string txt3 = EnterDate();
 
-        while (!DateOnly.TryParse(Console.ReadLine(), out slutDatum))
+        while (!DateOnly.TryParse(txt3, out slutDatum))
         {
             Console.Clear();
             ConsoleHelper.CenterAll("Invalid format! Please try again (YYYY-MM-DD): ");
@@ -122,6 +123,29 @@ public class AddPost()
         Console.ReadKey(true);
     }
 
+    private static string EnterDate()
+    {
+        char[] txt = new char[10];
+        for (int i = 0; i < txt.Length; i++)
+        {
+            if (i == 4 || i == 7)
+            {
+                Console.Write("-");
+                txt[i] = '-';
+            }
+            else
+                txt[i] = Console.ReadKey().KeyChar;
+        }
+
+        string txt2 = null;
+        foreach (var item in txt)
+        {
+            txt2 += item;
+        }
+
+        return txt2;
+    }
+
     /*---------------------------------------------------------------------------------*/
 
     public static void AddTo()
@@ -157,25 +181,25 @@ public class AddPost()
                 var kontaktTyp = "";
                 string EmailMobilNumber = "";
 
-        //kontaktTyp = "E-post";
-        //string[] menu =
-        //   ["==== Choose an Email address ====",
-        //    "(leave the field blank if you don't wish to enter an email at this time)"];
-        //ConsoleHelper.CenterMenu(menu);
-        //Console.SetCursorPosition(Console.WindowWidth / 2, Console.WindowHeight / 2 + 3);
-        //EmailMobilNumber = Console.ReadLine()!;
-        //Console.Clear();
+                //kontaktTyp = "E-post";
+                //string[] menu =
+                //   ["==== Choose an Email address ====",
+                //    "(leave the field blank if you don't wish to enter an email at this time)"];
+                //ConsoleHelper.CenterMenu(menu);
+                //Console.SetCursorPosition(Console.WindowWidth / 2, Console.WindowHeight / 2 + 3);
+                //EmailMobilNumber = Console.ReadLine()!;
+                //Console.Clear();
 
-        //if (EmailMobilNumber.IsNullOrEmpty())
-        //    EmailMobilNumber = "-";
+                //if (EmailMobilNumber.IsNullOrEmpty())
+                //    EmailMobilNumber = "-";
 
-        //    var std2 = new KontaktUppgift()
-        //    {
-        //        KontaktTyp = $"{kontaktTyp}",
-        //        KontaktInfo = $"{EmailMobilNumber}",
-        //        ElevID = elevID
-        //    };
-        //      context.Kontaktuppgifter.Add(std2);
+                //    var std2 = new KontaktUppgift()
+                //    {
+                //        KontaktTyp = $"{kontaktTyp}",
+                //        KontaktInfo = $"{EmailMobilNumber}",
+                //        ElevID = elevID
+                //    };
+                //      context.Kontaktuppgifter.Add(std2);
                 kontaktTyp = "E-post";
                 string[] menu =
                    ["==== Choose an Email address ====",
