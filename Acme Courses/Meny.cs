@@ -136,7 +136,7 @@ internal class Meny
         }
     }
 
-    private static void ShowAllCourses()
+    public static void ShowAllCourses()
     {
         Console.Clear();
         string[] menu =
@@ -188,7 +188,7 @@ internal class Meny
         }
     }
 
-    private static void ShowAllStudents()
+    public static void ShowAllStudents()
     {
         Console.Clear();
         string[] menu =
