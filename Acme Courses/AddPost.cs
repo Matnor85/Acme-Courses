@@ -18,8 +18,8 @@ public class AddPost()
         Console.Clear();
         string[] sa =
             [ "==== Add new course ====\n",
-              "",
-              "Enter course name: "];
+          "",
+          "Enter course name: "];
         ConsoleHelper.CenterMenu(sa);
         ConsoleHelper.SetCursor(3, 0);
         string namn = Console.ReadLine()!.Trim();
@@ -29,29 +29,38 @@ public class AddPost()
         ConsoleHelper.SetCursor(1, 0);
         string beskrivning = Console.ReadLine()!.Trim();
 
-        Console.Clear();
-        ConsoleHelper.CenterAll("Enter start date (YYYY-MM-DD): ");
-        ConsoleHelper.SetCursor(1, 0);
         DateOnly startDatum;
-        string txt2 = EnterDate();
-        while (!DateOnly.TryParse(txt2, out startDatum))
+
+        while (true)
         {
             Console.Clear();
-            ConsoleHelper.CenterAll("Invalid format! Please try again (YYYY-MM-DD): ");
-        }
+            ConsoleHelper.CenterAll("Enter start date (YYYY-MM-DD): ");
+            ConsoleHelper.SetCursor(1, 0);
+            string txt2 = EnterDate();
+            if (DateOnly.TryParse(txt2, out startDatum))
+                break;
 
-        Console.Clear();
-        ConsoleHelper.CenterAll("Enter end date (YYYY-MM-DD): ");
-        ConsoleHelper.SetCursor(1, 0);
+            Console.Clear();
+            ConsoleHelper.CenterAll("Invalid format! Please try again (YYYY-MM-DD): ");
+            Thread.Sleep(1500);
+        }
         DateOnly slutDatum;
-        string txt3 = EnterDate();
-
-        while (!DateOnly.TryParse(txt3, out slutDatum))
+        while (true)
         {
             Console.Clear();
-            ConsoleHelper.CenterAll("Invalid format! Please try again (YYYY-MM-DD): ");
-        }
+            ConsoleHelper.CenterAll("Enter end date (YYYY-MM-DD): ");
+            ConsoleHelper.SetCursor(1, 0);
+            string txt3 = EnterDate();
 
+            if (!DateOnly.TryParse(txt3, out slutDatum))
+            {
+                Console.Clear();
+                ConsoleHelper.CenterAll("Invalid format! Please try again (YYYY-MM-DD): ");
+                Thread.Sleep(1500);
+                continue;
+            }
+            break;
+        }
         List<string> educationList = new List<string>();
         Console.Clear();
         foreach (var edu in context.Utbildningar)
@@ -100,7 +109,6 @@ public class AddPost()
             ConsoleHelper.CenterAll("Cancelled.");
             return;
         }
-        var kl = new Kursledare();
 
         var course = new Kurs()
         {
@@ -117,12 +125,13 @@ public class AddPost()
 
         string[] end =
             [$"\n{namn} Added!",
-             "",
-             "",
-             "Press any key to continue..."];
+         "",
+         "",
+         "Press any key to continue..."];
         ConsoleHelper.CenterMenu(end);
         Console.ReadKey(true);
     }
+
 
     private static string EnterDate()
     {
@@ -230,6 +239,7 @@ public class AddPost()
             else if (intCheck == 2) { Meny.ShowAllStudents(); }
             else
             {
+                Console.Clear() ;
                 ConsoleHelper.CenterAll("Invalid input!");
                 Thread.Sleep(1500);
                 Console.Clear();
@@ -238,6 +248,7 @@ public class AddPost()
         }
         else
         {
+            Console.Clear() ;
             Console.WriteLine("The name your entering must only be a two parter");
             Thread.Sleep(2000);
             AddTo();
@@ -247,8 +258,7 @@ public class AddPost()
     private static int AreYouSure()
     {
         ConsoleHelper.CenterAll("Are you sure?: [Y] = YES or [N] for no");
-        Console.WriteLine();
-        Console.WriteLine();
+        Console.WriteLine("\n");
 
         ConsoleKeyInfo key = Console.ReadKey(true);
 
