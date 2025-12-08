@@ -13,7 +13,7 @@ public class AddPost()
 {
     static ApplicationContext context = new ApplicationContext();
 
-    public static void AddKursManuellt()
+    public static void AddCourse()
     {
         Console.Clear();
         string[] sa =
@@ -62,6 +62,7 @@ public class AddPost()
             break;
         }
         List<string> educationList = new List<string>();
+
         Console.Clear();
         foreach (var edu in context.Utbildningar)
         {
@@ -70,17 +71,25 @@ public class AddPost()
         educationList.Sort();
         educationList.Add("");
         educationList.Add("Enter Education ID:");
-
-        Console.Clear();
-        ConsoleHelper.CenterBlock(educationList);
-        Console.SetCursorPosition(Console.WindowWidth / 2, Console.WindowHeight / 2 + 3);
         int utbildningID;
-        while (!int.TryParse(Console.ReadLine(), out utbildningID) && ((educationList.Count - 3) >= (utbildningID - 1)) && utbildningID >=0)
+        while (true)
         {
             Console.Clear();
-            ConsoleHelper.CenterAll("Invalid choice! Please enter a number: ");
-        }
+            ConsoleHelper.CenterBlock(educationList);
+            Console.SetCursorPosition(Console.WindowWidth / 2, Console.WindowHeight / 2 + 3);
+            if (int.TryParse(Console.ReadLine(), out utbildningID))
+            {
+                if ((educationList.Count - 2) >= utbildningID && utbildningID > 0)
+                {
+                    break;
+                }
+            }
 
+            Console.Clear();
+            ConsoleHelper.CenterAll("Invalid choice! Please enter a number: ");
+            ConsoleHelper.CenterBlock(educationList);
+
+        }
         List<string> instructorList = new List<string>();
         foreach (var instructor in context.Kursledare)
         {
@@ -89,16 +98,24 @@ public class AddPost()
         instructorList.Sort();
         instructorList.Add("");
         instructorList.Add("Enter the Instructor's ID:");
-
-        Console.Clear();
+        int kursledareID;
+        while (true)
+        {
+            Console.Clear();
         ConsoleHelper.CenterBlock(instructorList);
         ConsoleHelper.SetCursor(3, 0);
-        int kursledareID;
-        while (!int.TryParse(Console.ReadLine(), out kursledareID))
-        {
+            //while (!int.TryParse(Console.ReadLine(), out kursledareID))
+            if (int.TryParse(Console.ReadLine(), out kursledareID))
+            {
+                if ((instructorList.Count - 2) >= kursledareID && kursledareID > 0)
+                {
+                    break;
+                }
+            }
             Console.Clear();
             ConsoleHelper.CenterAll("Invalid choice! Please enter a number: ");
         }
+
         Console.Clear();
         ConsoleHelper.CenterAll("\nAre you sure you want to add this course? (Y/N)");
         var key = Console.ReadKey(true).Key;
@@ -239,7 +256,7 @@ public class AddPost()
             else if (intCheck == 2) { Meny.ShowAllStudents(); }
             else
             {
-                Console.Clear() ;
+                Console.Clear();
                 ConsoleHelper.CenterAll("Invalid input!");
                 Thread.Sleep(1500);
                 Console.Clear();
@@ -248,7 +265,7 @@ public class AddPost()
         }
         else
         {
-            Console.Clear() ;
+            Console.Clear();
             Console.WriteLine("The name your entering must only be a two parter");
             Thread.Sleep(2000);
             AddTo();

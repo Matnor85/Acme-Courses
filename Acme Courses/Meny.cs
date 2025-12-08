@@ -174,7 +174,7 @@ internal class Meny
                 Console.ReadKey(true);
                 break;
             case '2':
-                AddPost.AddKursManuellt();
+                AddPost.AddCourse();
 
                 break;
             case '3':
