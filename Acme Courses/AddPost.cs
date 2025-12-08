@@ -75,7 +75,8 @@ public class AddPost()
         while (true)
         {
             Console.Clear();
-            ConsoleHelper.CenterBlock(educationList);
+            //ConsoleHelper.CenterBlock(educationList);
+            Meny.PrintStuff(educationList);
             Console.SetCursorPosition(Console.WindowWidth / 2, Console.WindowHeight / 2 + 3);
             if (int.TryParse(Console.ReadLine(), out utbildningID))
             {
@@ -102,8 +103,9 @@ public class AddPost()
         while (true)
         {
             Console.Clear();
-        ConsoleHelper.CenterBlock(instructorList);
-        ConsoleHelper.SetCursor(3, 0);
+            //ConsoleHelper.CenterBlock(instructorList);
+            Meny.PrintStuff(instructorList);
+            ConsoleHelper.SetCursor(3, 0);
             //while (!int.TryParse(Console.ReadLine(), out kursledareID))
             if (int.TryParse(Console.ReadLine(), out kursledareID))
             {
@@ -145,7 +147,8 @@ public class AddPost()
          "",
          "",
          "Press any key to continue..."];
-        ConsoleHelper.CenterMenu(end);
+        //ConsoleHelper.CenterMenu(end);
+        Meny.PrintStuff(end);
         Console.ReadKey(true);
     }
 
@@ -210,7 +213,8 @@ public class AddPost()
                 string[] menu =
                    ["==== Choose an Email address ====",
                     "(leave the field blank if you don't wish to enter an email at this time)"];
-                ConsoleHelper.CenterMenu(menu);
+                //ConsoleHelper.CenterMenu(menu);
+                Meny.PrintStuff(menu);
                 Console.SetCursorPosition(Console.WindowWidth / 2, Console.WindowHeight / 2 + 3);
                 EmailMobilNumber = Console.ReadLine()!;
                 Console.Clear();
@@ -228,7 +232,8 @@ public class AddPost()
                 string[] menu2 =
                    ["==== Choose a Phonenumber====",
                 "(leave the field blank if you don't wish to enter an email at this time)"];
-                ConsoleHelper.CenterMenu(menu2);
+                //ConsoleHelper.CenterMenu(menu2);
+                Meny.PrintStuff(menu2);
                 Console.SetCursorPosition(Console.WindowWidth / 2, Console.WindowHeight / 2 + 3);
                 EmailMobilNumber = Console.ReadLine()!;
                 Console.Clear();
@@ -248,9 +253,11 @@ public class AddPost()
                      $"Name: {namn}",
                      $"Email: {std2.KontaktInfo}",
                      $"Phone: {std3.KontaktInfo}",
+                     ""
                 ];
 
-                ConsoleHelper.CenterMenu(Check);
+                //ConsoleHelper.CenterMenu(Check);
+                Meny.PrintStuff(Check);
                 AreYouSure();
             }
             else if (intCheck == 2) { Meny.ShowAllStudents(); }

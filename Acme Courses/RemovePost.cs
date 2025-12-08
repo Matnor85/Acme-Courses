@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Query;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -95,7 +96,8 @@ public class RemovePost()
         elevList.Add("");
         elevList.Add("");
         elevList.Add("Enter the number of the row you wish to edit: ");
-        ConsoleHelper.CenterBlock(elevList);
+        //ConsoleHelper.CenterBlock(elevList);
+        Meny.PrintStuff(elevList);
         
         var position=Console.GetCursorPosition();
         Console.SetCursorPosition(position.Left+84, position.Top-1);

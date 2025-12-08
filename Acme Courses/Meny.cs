@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System.ComponentModel.DataAnnotations;
 
 namespace Acme_Courses;
 
@@ -48,12 +49,23 @@ internal class Meny
             }
         }
     }
-
     public static void PrintStuff(string[] menu)
     {
         for (int i = 0; i < menu.Length; i++)
         {
-            if (menu[i].Length >= 14)
+            if (i == 0 || i == menu.Length-1)
+                Console.SetCursorPosition((Console.WindowWidth / 2) - (menu[i].Length / 2), (Console.WindowHeight / 2) - (menu.Length / 2) + i);
+            else
+                Console.SetCursorPosition((Console.WindowWidth / 2) - (menu[3].Length / 2), (Console.WindowHeight / 2) - (menu.Length / 2) + i);
+
+            Console.Write(menu[i]);
+        }
+    }
+    public static void PrintStuff(List<string> menu)
+    {
+        for (int i = 0; i < menu.Count(); i++)
+        {
+            if (i == 0 || i == menu.Count()-1)
                 Console.SetCursorPosition((Console.WindowWidth / 2) - (menu[i].Length / 2), (Console.WindowHeight / 2) - (menu.Count() / 2) + i);
             else
                 Console.SetCursorPosition((Console.WindowWidth / 2) - (menu[3].Length / 2), (Console.WindowHeight / 2) - (menu.Count() / 2) + i);
@@ -159,8 +171,9 @@ internal class Meny
             "",
             "Please select an option: "];
         Console.Clear();
-        ConsoleHelper.CenterMenu(menu);
-        ConsoleHelper.SetCursor(4, 11);
+        //ConsoleHelper.CenterMenu(menu);
+        //ConsoleHelper.SetCursor(4, 11);
+        PrintStuff(menu);
         ConsoleKeyInfo key = Console.ReadKey(true);
 
         switch (key.KeyChar)
@@ -213,8 +226,9 @@ internal class Meny
             "",
             "Please select an option: "];
         Console.Clear();
-        ConsoleHelper.CenterMenu(menu);
-        ConsoleHelper.SetCursor(4, 11);
+        //ConsoleHelper.CenterMenu(menu);
+        //ConsoleHelper.SetCursor(4, 11);
+        PrintStuff(menu);
         ConsoleKeyInfo key = Console.ReadKey(true);
 
         switch (key.KeyChar)
