@@ -23,13 +23,7 @@ internal class Meny
             Console.Clear();
             //ConsoleHelper.CenterMenu(menu);
             //ConsoleHelper.SetCursor(4, 11);
-            for (int i = 0; i < menu.Length; i++)
-            {
-                //if (menu.Length >= 2)
-                Console.SetCursorPosition(Console.WindowWidth / 2, (Console.WindowHeight / 2 ) + i);
-
-                Console.Write(menu[i]);
-            }
+            PrintStuff(menu);
             ConsoleKeyInfo key = Console.ReadKey(true);
 
             switch (key.KeyChar) // Main Menu
@@ -55,6 +49,19 @@ internal class Meny
         }
     }
 
+    public static void PrintStuff(string[] menu)
+    {
+        for (int i = 0; i < menu.Length; i++)
+        {
+            if (menu[i].Length >= 14)
+                Console.SetCursorPosition((Console.WindowWidth / 2) - (menu[i].Length / 2), (Console.WindowHeight / 2) - (menu.Count() / 2) + i);
+            else
+                Console.SetCursorPosition((Console.WindowWidth / 2) - (menu[3].Length / 2), (Console.WindowHeight / 2) - (menu.Count() / 2) + i);
+
+            Console.Write(menu[i]);
+        }
+    }
+
     private static void ShowAllEducations()
     {
         Console.Clear();
@@ -68,8 +75,9 @@ internal class Meny
             "",
             "Please select an option: "];
         Console.Clear();
-        ConsoleHelper.CenterMenu(menu);
-        ConsoleHelper.SetCursor(4, 11);
+        //ConsoleHelper.CenterMenu(menu);
+        //ConsoleHelper.SetCursor(4, 11);
+        PrintStuff(menu);
         ConsoleKeyInfo key = Console.ReadKey(true);
         while (true)
         {
