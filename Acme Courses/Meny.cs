@@ -21,8 +21,15 @@ internal class Meny
             "",
             "Please select an option: "];
             Console.Clear();
-            ConsoleHelper.CenterMenu(menu);
-            ConsoleHelper.SetCursor(4, 11);
+            //ConsoleHelper.CenterMenu(menu);
+            //ConsoleHelper.SetCursor(4, 11);
+            for (int i = 0; i < menu.Length; i++)
+            {
+                //if (menu.Length >= 2)
+                Console.SetCursorPosition(Console.WindowWidth / 2, (Console.WindowHeight / 2 ) + i);
+
+                Console.Write(menu[i]);
+            }
             ConsoleKeyInfo key = Console.ReadKey(true);
 
             switch (key.KeyChar) // Main Menu
