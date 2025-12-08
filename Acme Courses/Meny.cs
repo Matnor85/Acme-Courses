@@ -49,26 +49,48 @@ internal class Meny
             }
         }
     }
+    static int index;
     public static void PrintStuff(string[] menu)
     {
+        var biggest = 1;
+        for (int i = 1; i < menu.Length - 2; i++)
+        {
+            var size = menu[i].Length;
+            if (size > biggest)
+            {
+                biggest = size;
+                index2 = i;
+            }
+        }
         for (int i = 0; i < menu.Length; i++)
         {
             if (i == 0 || i == menu.Length-1)
                 Console.SetCursorPosition((Console.WindowWidth / 2) - (menu[i].Length / 2), (Console.WindowHeight / 2) - (menu.Length / 2) + i);
             else
-                Console.SetCursorPosition((Console.WindowWidth / 2) - (menu[3].Length / 2), (Console.WindowHeight / 2) - (menu.Length / 2) + i);
+                Console.SetCursorPosition((Console.WindowWidth / 2) - (menu[index].Length / 2), (Console.WindowHeight / 2) - (menu.Length / 2) + i);
 
             Console.Write(menu[i]);
         }
     }
+    static int index2;
     public static void PrintStuff(List<string> menu)
     {
+        var biggest = 1;
+        for (int i = 1; i < menu.Count-2; i++)
+        {
+            var size = menu[i].Length;
+            if (size > biggest)
+            {
+                biggest = size;
+                index2 = i;
+            }
+        }
         for (int i = 0; i < menu.Count(); i++)
         {
             if (i == 0 || i == menu.Count()-1)
                 Console.SetCursorPosition((Console.WindowWidth / 2) - (menu[i].Length / 2), (Console.WindowHeight / 2) - (menu.Count() / 2) + i);
             else
-                Console.SetCursorPosition((Console.WindowWidth / 2) - (menu[3].Length / 2), (Console.WindowHeight / 2) - (menu.Count() / 2) + i);
+                Console.SetCursorPosition((Console.WindowWidth / 2) - (menu[index2].Length / 2), (Console.WindowHeight / 2) - (menu.Count() / 2) + i);
 
             Console.Write(menu[i]);
         }
@@ -81,9 +103,7 @@ internal class Meny
            ["==== Educations ====",
             "",
             "1. Show all educations",
-            "2. Add education",
-            "3. Remove education",
-            "4. Back",
+            "2. Back",
             "",
             "Please select an option: "];
         Console.Clear();
@@ -152,12 +172,6 @@ internal class Meny
                     ShowAllEducations();
                     break;
                 case '2':
-                    ShowAllEducations();
-                    break;
-                case '3':
-                    ShowAllEducations();
-                    break;
-                case '4':
                     ShowMainMenu();
                     break; 
 
