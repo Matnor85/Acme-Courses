@@ -71,11 +71,11 @@ public class AddPost()
         educationList.Add("");
         educationList.Add("Enter Education ID:");
 
-        ConsoleHelper.SetCursor(4, 19);// fixa pointer
         Console.Clear();
         ConsoleHelper.CenterBlock(educationList);
+        Console.SetCursorPosition(Console.WindowWidth / 2, Console.WindowHeight / 2 + 3);
         int utbildningID;
-        while (!int.TryParse(Console.ReadLine(), out utbildningID))
+        while (!int.TryParse(Console.ReadLine(), out utbildningID) && ((educationList.Count - 3) >= (utbildningID - 1)) && utbildningID >=0)
         {
             Console.Clear();
             ConsoleHelper.CenterAll("Invalid choice! Please enter a number: ");
