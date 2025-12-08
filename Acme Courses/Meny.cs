@@ -202,7 +202,7 @@ internal class Meny
                 RemovePost.RemoveFrom("Kurs");
                 break;
             case '4':
-                ShowAllEducations();
+                ShowMainMenu();
                 break;
             default:
                 ConsoleHelper.Sound();
@@ -246,7 +246,9 @@ internal class Meny
                 }
                 else
                 {
-                    ConsoleHelper.CenterBlock(fullNames);
+                    //ConsoleHelper.CenterBlock(fullNames);
+                    List<string> Names = ["Students", .. fullNames, ""];
+                    PrintStuff(fullNames);
                 }
                 Console.ReadKey(true);
                 break;
