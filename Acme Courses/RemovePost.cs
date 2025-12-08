@@ -96,11 +96,10 @@ public class RemovePost()
         elevList.Add("");
         elevList.Add("");
         elevList.Add("Enter the number of the row you wish to edit: ");
-        //ConsoleHelper.CenterBlock(elevList);
         Meny.PrintStuff(elevList);
-        
-        var position=Console.GetCursorPosition();
-        Console.SetCursorPosition(position.Left+84, position.Top-1);
+
+        var position = Console.GetCursorPosition();
+        Console.SetCursorPosition(position.Left, position.Top);
         string key = Console.ReadLine()!;
 
         if (int.TryParse(key, out int input))

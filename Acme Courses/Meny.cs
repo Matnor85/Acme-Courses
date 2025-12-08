@@ -246,9 +246,17 @@ internal class Meny
                 }
                 else
                 {
-                    //ConsoleHelper.CenterBlock(fullNames);
-                    List<string> Names = ["Students", .. fullNames, ""];
-                    PrintStuff(fullNames);
+                    List<string> NamesID = new List<string>();
+                    NamesID.Add("==== Students ====");
+                    NamesID.Add("");
+                    int i = 1;
+                    foreach (var item in fullNames)
+                    {
+                        NamesID.Add($"{i} {item}");
+                            i ++;
+                    }
+                    NamesID.Add("");
+                    PrintStuff(NamesID);
                 }
                 Console.ReadKey(true);
                 break;
