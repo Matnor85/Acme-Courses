@@ -44,7 +44,7 @@ internal class Meny
                 default:
                     ConsoleHelper.Sound();
                     ConsoleHelper.CenterAll("Invalid choice");
-                    Console.ReadKey(true);
+                    Thread.Sleep(1500);
                     break;
             }
         }
@@ -87,20 +87,30 @@ internal class Meny
             "",
             "Please select an option: "];
         Console.Clear();
-        //ConsoleHelper.CenterMenu(menu);
-        //ConsoleHelper.SetCursor(4, 11);
-        PrintStuff(menu);
-        ConsoleKeyInfo key = Console.ReadKey(true);
+
         while (true)
         {
+            Console.Clear();
+            PrintStuff(menu);
+            ConsoleKeyInfo key = Console.ReadKey(true);
             switch (key.KeyChar) // Education Menu
             {
                 case '1':
                     Console.Clear();
                     var utbildningar = context.Utbildningar
-                    .Select(u => $"{u.ID}. {u.Namn}")
+                    .Select(u => $"{u.Namn}")
                     .ToList();
-                    ConsoleHelper.CenterAll(string.Join("\n", utbildningar));
+                    List<string> utbildningarList = new List<string>();
+                    utbildningarList.Add("==== Educations ====");
+                    utbildningarList.Add("");
+                    int i = 1;
+                    foreach (var item in utbildningar)
+                    {
+                        utbildningarList.Add($"{i} {item}");
+                        i++;
+                    }
+                    utbildningarList.Add("");
+                    PrintStuff(utbildningarList);
 
                     ConsoleHelper.CenterAll("Select education for information:\n");
                     ConsoleHelper.SetCursor(13, 0);
@@ -121,8 +131,10 @@ internal class Meny
                     }
 
                     Console.Clear();
-                    var utbild = context.Utbildningar.Include(u =>u.Elever).ToList();
+                    var utbild = context.Utbildningar.Include(u =>u.Elever);
                     List<string> newList = new List<string>();
+                    newList.Add("==== Educations ====");
+                    newList.Add("");
                     foreach (var ut in utbild)
                     {
                         if (ut.ID != keyInfo) continue;
@@ -132,10 +144,10 @@ internal class Meny
                         {
                             newList.Add($" {elev.Förnamn}: {elev.Efternamn}");
                         }
-                        newList.Add("");
+                    newList.Add("");
                     }
-                    
-                    ConsoleHelper.CenterBlock(newList);
+
+                    PrintStuff(newList);
                     Console.ReadKey(true);
                     ShowAllEducations();
                     break;
@@ -152,8 +164,8 @@ internal class Meny
                 default:
                     ConsoleHelper.Sound();
                     ConsoleHelper.CenterAll("Invalid choice");
-                    Console.ReadKey(true);
-                    break;
+                    Thread.Sleep(1500);
+                    continue;
             }
         }
     }
@@ -207,7 +219,7 @@ internal class Meny
             default:
                 ConsoleHelper.Sound();
                 ConsoleHelper.CenterAll("Invalid choice");
-                Console.ReadKey(true);
+                Thread.Sleep(1500);
                 break;
         }
     }
@@ -275,7 +287,7 @@ internal class Meny
             default:
                 ConsoleHelper.Sound();
                 ConsoleHelper.CenterAll("Invalid choice");
-                Console.ReadKey(true);
+                Thread.Sleep(1500);
                 break;
         }
     }
